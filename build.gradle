@@ -1,9 +1,12 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'isc.pucmm.eict'
 version '1.0-SNAPSHOT'
+
+mainClassName = 'edu.pucmm.eict.Main'
 
 repositories {
     mavenCentral()
@@ -12,6 +15,11 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    //Javalin
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'io.javalin:javalin:3.13.7'
+    //Freemarker for templates
+    implementation group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
 }
 
 test {
