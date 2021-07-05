@@ -4,6 +4,9 @@ import edu.pucmm.eict.Database.DBEntityManager;
 import edu.pucmm.eict.Models.Usuario;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 public class UserServices extends DBEntityManager<Usuario> {
 
     private static UserServices instancia;
@@ -30,4 +33,26 @@ public class UserServices extends DBEntityManager<Usuario> {
         UserServices.getInstancia().insert(yo);
     }
 
+    public Usuario getUserByUsername(String username) {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("SELECT u FROM Usuario u where u.username = :username", Usuario.class);
+        query.setParameter("username", username);
+        return (Usuario) query.getResultList().get(0);
+    }
+
+    public static Usuario login(String username, String password) {
+        Usuario usuario;
+        usuario = UserServices.getInstancia().getUserByUsername(username);
+        StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+
+        if (usuario != null) {
+            if (passwordEncryptor.checkPassword(password, usuario.getPassword())) {
+                return usuario;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
 }
