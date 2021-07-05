@@ -30,6 +30,12 @@ dependencies {
     implementation 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
     //URL Validator
     implementation 'commons-validator:commons-validator:1.7'
+
+    // User agent parser
+    // https://mvnrepository.com/artifact/com.blueconic/browscap-java
+    // https://github.com/blueconic/browscap-java
+    implementation group: 'com.blueconic', name: 'browscap-java', version: '1.3.6'
+
 }
 
 shadowJar {

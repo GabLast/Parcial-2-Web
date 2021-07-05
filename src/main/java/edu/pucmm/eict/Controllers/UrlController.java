@@ -1,5 +1,6 @@
 package edu.pucmm.eict.Controllers;
 
+import edu.pucmm.eict.Helpers.UserAgent;
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
 import edu.pucmm.eict.Services.UrlServices;
@@ -7,6 +8,7 @@ import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import org.jasypt.util.text.StrongTextEncryptor;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,8 @@ public class UrlController {
 
     Javalin app;
     static Usuario user = null;
+
+    //String aux = ctx.req.getHeader("User-Agent");
 
     public UrlController(Javalin app)
     {
@@ -45,11 +49,14 @@ public class UrlController {
                    Map<String, Object> freeMarkerVars = new HashMap<>();
                });
 
-                get("/acortarURL", ctx -> {
+                get("/acortar", ctx -> {
 
-                    String test = "https://www.amazon.com/ref=nav_logo";
+                    String test = "https://www.programmableweb.com/category/url-shortener/libraries";
                     Url generated = UrlServices.getInstancia().generateShortURL( test,null);
-                    ctx.result(generated.getShortUrl());
+                    String aux = ctx.req.getHeader("User-Agent");
+                    String temp = UserAgent.getNavegador(aux);
+                    String ip = ctx.req.getRemoteAddr();
+                    ctx.result(generated.getShortUrl() + "\n\n" + aux + "\n\n" + temp + "\n\n" + UserAgent.getSistemaOperativo(aux) + "\n\n" + ip);
                 });
 
             });
@@ -58,6 +65,7 @@ public class UrlController {
 
                 get("/", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
+
                 });
             });
         });
