@@ -18,9 +18,11 @@ edu/pucmm/eict/Services/DetailsUrlServices.java
  edu.pucmm.eict.Services.DetailsUrlServices
 edu/pucmm/eict/Helpers/UserAgent.java
  edu.pucmm.eict.Helpers.UserAgent
+edu/pucmm/eict/Controllers/GeneralController.java
+ edu.pucmm.eict.Controllers.GeneralController
+edu/pucmm/eict/Controllers/UrlController.java
+ edu.pucmm.eict.Controllers.UrlController
 edu/pucmm/eict/Controllers/UserController.java
  edu.pucmm.eict.Controllers.UserController
 edu/pucmm/eict/Main.java
  edu.pucmm.eict.Main
-edu/pucmm/eict/Controllers/UrlController.java
- edu.pucmm.eict.Controllers.UrlController

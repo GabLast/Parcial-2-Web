@@ -55,18 +55,16 @@ public class UserController {
                                 ctx.cookie("rememberme", myEncryptedText , 604800);
                             }
                         }
+                        if(GeneralController.getInstancia().getRequestedURL().equalsIgnoreCase(""))
+                        {
+                            ctx.redirect("/");
+                        }
+                        else {
+                            String aux = GeneralController.getInstancia().getRequestedURL();
+                            GeneralController.getInstancia().setRequestedURL("");
+                            ctx.redirect(aux);
+                        }
                     }
-                });
-
-                get("/logout", ctx -> {
-                    //invalidando la sesion.
-                    if (ctx.cookie("rememberme") != null)
-                    {
-                        UrlController.user = null;
-                        ctx.removeCookie("rememberme");
-                    }
-                    ctx.req.getSession().invalidate();
-                    ctx.redirect("/");
                 });
 
                 get("/sign-in", ctx -> {
@@ -87,6 +85,20 @@ public class UserController {
                     }else{
                         throw new RuntimeException("El usuario digitado ya está en uso");
                     }
+                });
+            });
+
+            path("/logout", () -> {
+
+                get("/", ctx -> {
+                    if (ctx.cookie("rememberme") != null)
+                    {
+
+                        ctx.removeCookie("rememberme");
+                        GeneralController.getInstancia().setUser(null);
+                    }
+                    ctx.req.getSession().invalidate();
+                    ctx.redirect("/");
                 });
             });
         });
