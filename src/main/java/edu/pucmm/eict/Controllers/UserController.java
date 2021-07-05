@@ -35,7 +35,7 @@ public class UserController {
                     String password = ctx.formParam("password");
                     String remember = ctx.formParam("remember");
 
-                    Usuario user = UserServices.login(username, password);
+                    Usuario user = UserServices.getInstancia().login(username, password);
 
                     if(user == null)
                     {
@@ -66,6 +66,26 @@ public class UserController {
                     }
                     ctx.req.getSession().invalidate();
                     ctx.redirect("/");
+                });
+
+                get("/sign-in", ctx -> {
+
+                });
+
+                post("/sign-in", ctx -> {
+                    String username = ctx.formParam("username");
+                    String password = ctx.formParam("password");
+
+                    if(UserServices.getInstancia().usernameUnico(username)){
+                        if(UserServices.getInstancia().registrarUser(username, password))
+                        {
+                            ctx.redirect("/user/login");
+                        }else{
+                            throw new RuntimeException("Hubo un problema al registrar el usuario.");
+                        }
+                    }else{
+                        throw new RuntimeException("El usuario digitado ya está en uso");
+                    }
                 });
             });
         });

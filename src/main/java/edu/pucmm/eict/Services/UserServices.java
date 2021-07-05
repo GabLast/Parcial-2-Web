@@ -2,6 +2,7 @@ package edu.pucmm.eict.Services;
 
 import edu.pucmm.eict.Database.DBEntityManager;
 import edu.pucmm.eict.Models.Usuario;
+import org.h2.engine.User;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import javax.persistence.EntityManager;
@@ -40,7 +41,7 @@ public class UserServices extends DBEntityManager<Usuario> {
         return (Usuario) query.getResultList().get(0);
     }
 
-    public static Usuario login(String username, String password) {
+    public Usuario login(String username, String password) {
         Usuario usuario;
         usuario = UserServices.getInstancia().getUserByUsername(username);
         StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
@@ -53,6 +54,33 @@ public class UserServices extends DBEntityManager<Usuario> {
             }
         } else {
             return null;
+        }
+    }
+
+    public boolean usernameUnico(String username)
+    {
+        Usuario user = getUserByUsername(username);
+        if(user == null)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean registrarUser(String username, String password)
+    {
+        StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+        String encryptedPassword = passwordEncryptor.encryptPassword(password);
+
+        Usuario nuevo = new Usuario(username, encryptedPassword);
+
+        UserServices.getInstancia().insert(nuevo);
+
+        if(getUserByUsername(nuevo.getUsername()) != null) {
+            return true;
+        }else {
+            return false;
         }
     }
 }
