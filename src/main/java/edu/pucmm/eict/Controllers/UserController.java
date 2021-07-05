@@ -62,6 +62,7 @@ public class UserController {
                     //invalidando la sesion.
                     if (ctx.cookie("rememberme") != null)
                     {
+                        UrlController.user = null;
                         ctx.removeCookie("rememberme");
                     }
                     ctx.req.getSession().invalidate();

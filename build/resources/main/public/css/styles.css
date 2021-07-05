@@ -1,0 +1,15 @@
+.customColor {
+    background: #080808 !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+body {
+    background: whitesmoke !important;
+}
+
+input[type="file"] {
+    display: none !important;
+}
+.custom-file-upload {
+    cursor: pointer !important;
+}

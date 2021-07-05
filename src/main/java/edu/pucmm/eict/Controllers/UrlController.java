@@ -1,6 +1,8 @@
 package edu.pucmm.eict.Controllers;
 
+import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
+import edu.pucmm.eict.Services.UrlServices;
 import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import org.jasypt.util.text.StrongTextEncryptor;
@@ -43,14 +45,20 @@ public class UrlController {
                    Map<String, Object> freeMarkerVars = new HashMap<>();
                });
 
+                get("/acortarURL", ctx -> {
+
+                    String test = "https://www.amazon.com/ref=nav_logo";
+                    Url generated = UrlServices.getInstancia().generateShortURL( test,null);
+                    ctx.result(generated.getShortUrl());
+                });
+
             });
 
-            path("/home", () -> {
+            path("/dsadasdsad", () -> {
 
                 get("/", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                 });
-
             });
         });
     }

@@ -11,7 +11,7 @@ public class Url implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idURL;
-    @NotNull
+    @NotNull @Column (length = 1000)
     private String url;
     @NotNull
     private String shortUrl;
