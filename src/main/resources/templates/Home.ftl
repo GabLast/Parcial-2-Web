@@ -93,10 +93,10 @@
                                     <tr class="table-secondary">
                                         <td>${u.idURL}</td>
                                         <td>${u.url}</td>
-                                        <form id="shorturluse" method="POST" action="/home/use-shorturl">
+                                        <form id="shorturluse${u.idURL}" method="POST" action="/home/use-shorturl">
                                             <td>
                                                 <input hidden value="${u.idURL}" name="idurl">
-                                                <button class="btn btn-success" type="submit" form="shorturluse">
+                                                <button class="btn btn-success" type="submit" form="shorturluse${u.idURL}">
                                                     ${u.shortUrl}
                                                 </button>
                                             </td>

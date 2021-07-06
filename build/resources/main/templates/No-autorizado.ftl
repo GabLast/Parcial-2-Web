@@ -6,12 +6,17 @@
 </#macro>
 
 <#macro page_body>
-<body>
-<div class="row">
-    <div class="col-md-4 offset-md-1">
-        <h2>Usted no tiene permisos para acceder a este recurso<h2>
+    <body>
+    <div class="row">
+        <div class="col-md-6 offset-md-1">
+            <h2 class="text-light">Usted no tiene permisos para acceder a este recurso
+            </h2>
+            <br>
+            <a href="/">
+                <button class="btn btn-go-home btn-custom1">Volver al Inicio</button>
+            </a>
+        </div>
     </div>
-</div>
-</body>
+    </body>
 </#macro>
 <@display_page/>

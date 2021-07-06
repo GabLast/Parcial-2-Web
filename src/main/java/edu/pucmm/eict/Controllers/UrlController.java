@@ -128,24 +128,18 @@ public class UrlController {
 
             path("/administracion", () -> {
 
-                before("/administracion", ctx -> {
-                    Usuario user = ctx.sessionAttribute("usuario");
-                    if (user == null) {
+                before(ctx -> {
+
+                    if (GeneralController.getInstancia().getUser() == null) {
                         GeneralController.getInstancia().setRequestedURL(ctx.req.getRequestURI());
                         ctx.redirect("/Login.html");
+                    }else if (GeneralController.getInstancia().getUser().getAdmin() == 0){
+                        ctx.redirect("/error/not-authorized");
                     }
-
-                    if(user.getAdmin() != 1)
-                    {
-                        Map<String, Object> freeMarkerVars = new HashMap<>();
-                        freeMarkerVars.put("title", "Error 401");
-                        ctx.render("/templates/No-autorizado.ftl", freeMarkerVars);
-                    }
-
                 });
 
                 get("/", ctx -> {
-                    ctx.redirect("/listar-usuarios/view_page/1");
+                    ctx.redirect("/administracion/listar-usuarios/view_page/1");
                 });
 
                 get("/listar-usuarios/view_page/:page", ctx -> {
@@ -168,6 +162,21 @@ public class UrlController {
 
                 });
 
+                post("/user/give-admin", ctx -> {
+                    long id = ctx.formParam("iduser", Long.class).get();
+
+                    Usuario user = UserServices.getInstancia().find(id);
+                    if(user != null)
+                    {
+                        user.setAdmin(1);
+                        UserServices.getInstancia().update(user);
+                    }else {
+                        System.out.println("Usuario no existe.");
+                    }
+
+                    ctx.redirect("/administracion/listar-usuarios/view_page/1");
+                });
+
                 post("/user/delete", ctx -> {
                     long id = ctx.formParam("iduser", Long.class).get();
 
@@ -181,6 +190,15 @@ public class UrlController {
                     }
 
                     ctx.redirect("/administracion/listar-usuarios/view_page/1");
+                });
+            });
+
+            path("/error", () -> {
+                get("/not-authorized", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Error 401");
+                    freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+                    ctx.render("/templates/No-autorizado.ftl", freeMarkerVars);
                 });
             });
         });
