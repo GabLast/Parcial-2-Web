@@ -3,7 +3,6 @@ package edu.pucmm.eict.Controllers;
 import edu.pucmm.eict.Helpers.UserAgent;
 import edu.pucmm.eict.Models.DetallesURL;
 import edu.pucmm.eict.Models.Url;
-import edu.pucmm.eict.Models.Usuario;
 import edu.pucmm.eict.Services.DetailsUrlServices;
 import edu.pucmm.eict.Services.UrlServices;
 import edu.pucmm.eict.Services.UserServices;
@@ -25,7 +24,6 @@ public class UrlController {
     public UrlController(Javalin app) {
         this.app = app;
     }
-
     public void routes() {
 
         app.routes(() -> {
@@ -75,6 +73,17 @@ public class UrlController {
                     ctx.render("/templates/Home.ftl", freeMarkerVars);
                 });
 
+                get("/resumen/:id" , ctx -> {
+                    Long urlid = ctx.pathParam("id", Long.class).get();
+                    Url url = UrlServices.getInstancia().findUrlById(urlid);
+                    System.out.println(url);
+                    String shortURL = url.getShortUrl();
+                    Map<String, Object> attributes = DetallesController.getInstance().getStats(shortURL);
+                    attributes.put("title", "Resumen");
+
+                    ctx.render("/templates/SummaryPage.ftl" , attributes);
+                });
+
                 post("/acortar", ctx -> {
                     String url = ctx.formParam("originalURL");
                     Url generated;
@@ -93,7 +102,7 @@ public class UrlController {
 
                 post("/use-shorturl", ctx -> {
                     long id = ctx.formParam("idurl", Long.class).get();
-
+                     System.out.print(id + "    ");
                     String useragent = ctx.req.getHeader("User-Agent");
                     String ip = ctx.req.getRemoteAddr();
 

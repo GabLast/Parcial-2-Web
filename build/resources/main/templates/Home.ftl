@@ -36,7 +36,6 @@
                 <br><br>
                 <#if url?has_content>
                     <div class="row">
-                        <br><br>
                         <div class="col-md-8 offset-md-2">
                             <input type="text" class="form-control" value="${url.shortUrl}"
                                    placeholder="https://www.my.url/" required>
@@ -87,6 +86,7 @@
                                         <#else>
 
                                         </#if>
+                                        <th scope="col">Estadisticas</th>
                                     </tr>
                                     </thead>
                                     <tbody class="text-center table-bordered">
@@ -97,11 +97,16 @@
                                         <form id="shorturluse" method="POST" action="/home/use-shorturl">
                                             <td>
                                                 <input hidden value="${u.idURL}" name="idurl">
-                                                <button class="btn btn-success" type="submit" form="shorturluse">
+                                                <button class="btn btn-success" type="submit">
                                                     ${u.shortUrl}
                                                 </button>
                                             </td>
                                         </form>
+                                        <td>
+                                            <form id="resumenURL" method="GET" action="/home/resumen/${u.idURL}">
+                                                <button class="btn btn-dark" type="submit">Resumen</button>
+                                            </form>
+                                        </td>
                                         <#if usuario?has_content>
                                             <td>
                                                 <div class="row justify-content-evenly">
