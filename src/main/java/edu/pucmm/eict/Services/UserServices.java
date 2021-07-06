@@ -1,6 +1,7 @@
 package edu.pucmm.eict.Services;
 
 import edu.pucmm.eict.Database.DBEntityManager;
+import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
@@ -91,5 +92,22 @@ public class UserServices extends DBEntityManager<Usuario> {
         }else {
             return false;
         }
+    }
+
+    public List<Url> getUsersPaginated(int page){
+        EntityManager em = getEntityManager();
+
+        int rowsPerPage = 10;
+        int selectedPage = page;
+
+        Query selectQuery = em.createQuery("select p From Usuario p where p.borrado = 0 and p.username != :username");
+        selectQuery.setParameter("username", "admin");
+        selectQuery.setFirstResult((selectedPage - 1) * rowsPerPage);
+        selectQuery.setMaxResults(rowsPerPage);
+
+        selectQuery.getFirstResult();
+        List<Url> lista = selectQuery.getResultList();
+
+        return lista;
     }
 }

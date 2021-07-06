@@ -104,7 +104,21 @@ public class UrlController {
                         DetailsUrlServices.getInstancia().insert(nuevo);
                     }else {
                         System.out.println("Url no existe.");
-                        ctx.redirect("/");
+                    }
+
+                    ctx.redirect("/");
+                });
+
+                post("/delete", ctx -> {
+                    long id = ctx.formParam("url", Long.class).get();
+
+                    Url url = UrlServices.getInstancia().find(id);
+                    if(url != null)
+                    {
+                        url.setBorrado(1);
+                        UrlServices.getInstancia().update(url);
+                    }else {
+                        System.out.println("Url no existe.");
                     }
 
                     ctx.redirect("/");
@@ -112,11 +126,61 @@ public class UrlController {
 
             });
 
-            path("/dsadasdsad", () -> {
+            path("/administracion", () -> {
+
+                before("/administracion", ctx -> {
+                    Usuario user = ctx.sessionAttribute("usuario");
+                    if (user == null) {
+                        GeneralController.getInstancia().setRequestedURL(ctx.req.getRequestURI());
+                        ctx.redirect("/Login.html");
+                    }
+
+                    if(user.getAdmin() != 1)
+                    {
+                        Map<String, Object> freeMarkerVars = new HashMap<>();
+                        freeMarkerVars.put("title", "Error 401");
+                        ctx.render("/templates/No-autorizado.ftl", freeMarkerVars);
+                    }
+
+                });
 
                 get("/", ctx -> {
-                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    ctx.redirect("/listar-usuarios/view_page/1");
+                });
 
+                get("/listar-usuarios/view_page/:page", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Listado de Usuarios");
+                    int page = ctx.pathParam("page", Integer.class).get();
+                    freeMarkerVars.put("usuarios", UserServices.getInstancia().getUsersPaginated(page));
+
+                    int pageSize = 10;
+                    EntityManager em = UrlServices.getInstancia().getEntityManager();
+                    String count = "Select count (p.idUser) from Usuario p where p.borrado = 0";
+                    Query countQuery = em.createQuery(count);
+                    Long countResults = (Long) countQuery.getSingleResult();
+                    int totalPags = (int) (Math.ceil(((float)countResults / (float)pageSize)));
+                    freeMarkerVars.put("paginas", totalPags);
+
+                    freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+
+                    ctx.render("/templates/ListarUsuarios.ftl", freeMarkerVars);
+
+                });
+
+                post("/user/delete", ctx -> {
+                    long id = ctx.formParam("iduser", Long.class).get();
+
+                    Usuario user = UserServices.getInstancia().find(id);
+                    if(user != null)
+                    {
+                        user.setBorrado(1);
+                        UserServices.getInstancia().update(user);
+                    }else {
+                        System.out.println("Usuario no existe.");
+                    }
+
+                    ctx.redirect("/administracion/listar-usuarios/view_page/1");
                 });
             });
         });

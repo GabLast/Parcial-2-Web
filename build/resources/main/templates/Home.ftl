@@ -36,7 +36,6 @@
                 <br><br>
                 <#if url?has_content>
                     <div class="row">
-                        <br><br>
                         <div class="col-md-8 offset-md-2">
                             <input type="text" class="form-control" value="${url.shortUrl}"
                                    placeholder="https://www.my.url/" required>
@@ -114,11 +113,14 @@
                                                     </div>
                                                     <#if usuario.admin == 1>
                                                         <div class="col-md-6">
-                                                            <button class="btn btn-success btn-sm btn-eliminar"
-                                                                    type="submit"
-                                                                    form="">
-                                                                <span class="material-icons">delete</span>
-                                                            </button>
+                                                            <form id="delete${u.idURL}" method="post" action="/home/delete">
+                                                                <input hidden value="${u.idURL}" name="url">
+                                                                <button class="btn btn-success btn-sm btn-eliminar"
+                                                                        type="submit"
+                                                                        form="delete${u.idURL}">
+                                                                    <span class="material-icons">delete</span>
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     <#else>
                                                     </#if>
