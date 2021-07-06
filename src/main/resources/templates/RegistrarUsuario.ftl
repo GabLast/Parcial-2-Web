@@ -17,14 +17,14 @@
                     <div class="modal-body">
                         <form id="addform" method="post" action="">
                             <div class="row mb-3 form-group">
-                                <label for="username" class="col-sm-2 col-form-label">Usuario:</label>
-                                <div class="col-sm-10">
+                                <label for="username" class="col-sm-3 col-form-label">Usuario:</label>
+                                <div class="col-sm-9">
                                     <input type="text" class="form-control" id="username" name="username">
                                 </div>
                             </div>
                             <div class="row mb-3 form-group">
-                                <label for="password" class="col-sm-2 col-form-label">Contrase&ntilde;a:</label>
-                                <div class="col-sm-10">
+                                <label for="password" class="col-sm-3 col-form-label">Contrase&ntilde;a:</label>
+                                <div class="col-sm-9">
                                     <input type="password" class="form-control" id="password" name="password">
                                 </div>
                             </div>

@@ -1,8 +1,10 @@
 package edu.pucmm.eict.Controllers;
 
 import edu.pucmm.eict.Helpers.UserAgent;
+import edu.pucmm.eict.Models.DetallesURL;
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
+import edu.pucmm.eict.Services.DetailsUrlServices;
 import edu.pucmm.eict.Services.UrlServices;
 import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
@@ -74,17 +76,38 @@ public class UrlController {
                 });
 
                 post("/acortar", ctx -> {
+                    String url = ctx.formParam("originalURL");
+                    Url generated;
 
-                    String test = "https://www.programmableweb.com/category/url-shortener/libraries";
-                    Url generated = UrlServices.getInstancia().generateShortURL(test, null);
-                    String aux = ctx.req.getHeader("User-Agent");
-                    String temp = UserAgent.getNavegador(aux);
-                    String ip = ctx.req.getRemoteAddr();
-                    ctx.result(generated.getShortUrl() + "\n\n" + aux + "\n\n" + temp + "\n\n" + UserAgent.getSistemaOperativo(aux) + "\n\n" + ip);
+                    if(GeneralController.getInstancia().getUser() != null)
+                    {
+                        generated = UrlServices.getInstancia().generateShortURL(url, GeneralController.getInstancia().getUser());
+                    }else {
+                        generated = UrlServices.getInstancia().generateShortURL(url, null);
+                    }
 
                     GeneralController.getInstancia().setLastURLShortened(generated);
 
                     ctx.redirect("/home/acortar/view_page/1");
+                });
+
+                post("/use-shorturl", ctx -> {
+                    long id = ctx.formParam("idurl", Long.class).get();
+
+                    String useragent = ctx.req.getHeader("User-Agent");
+                    String ip = ctx.req.getRemoteAddr();
+
+                    Url url = UrlServices.getInstancia().find(id);
+                    if(url != null)
+                    {
+                        DetallesURL nuevo = new DetallesURL(UserAgent.getNavegador(useragent), ip, UserAgent.getSistemaOperativo(useragent), url);
+                        DetailsUrlServices.getInstancia().insert(nuevo);
+                    }else {
+                        System.out.println("Url no existe.");
+                        ctx.redirect("/");
+                    }
+
+                    ctx.redirect("/");
                 });
 
             });
@@ -99,3 +122,8 @@ public class UrlController {
         });
     }
 }
+
+//user agent stuff
+//    String aux = ctx.req.getHeader("User-Agent");
+//    String temp = UserAgent.getNavegador(aux);
+//    String ip = ctx.req.getRemoteAddr();

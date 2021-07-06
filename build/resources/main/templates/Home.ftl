@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container-fluid">
-                <form method="post" action="/home/acotar">
+                <form method="post" id="acortarurlform" action="/home/acortar">
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -25,7 +25,7 @@
                             </#if>
                         </div>
                         <div class="col md-1">
-                            <button class="btn btn-group-lg btn-dark" type="submit">
+                            <button class="btn btn-group-lg btn-dark" type="submit" form="acortarurlform">
                                 Acortar
                             </button>
                         </div>
@@ -33,8 +33,10 @@
                         </div>
                     </div>
                 </form>
+                <br><br>
                 <#if url?has_content>
                     <div class="row">
+                        <br><br>
                         <div class="col-md-8 offset-md-2">
                             <input type="text" class="form-control" value="${url.shortUrl}"
                                    placeholder="https://www.my.url/" required>
@@ -88,14 +90,15 @@
                                     </tr>
                                     </thead>
                                     <tbody class="text-center table-bordered">
+                                    <#list urls as u>
                                     <tr class="table-secondary">
-                                        <td>$</td>
-                                        <td>$</td>
-                                        <form method="POST" action="#">
+                                        <td>${u.idURL}</td>
+                                        <td>${u.url}</td>
+                                        <form id="shorturluse" method="POST" action="/home/use-shorturl">
                                             <td>
-                                                <input hidden value="$">
-                                                <button class="btn btn-success" type="submit">
-                                                    $
+                                                <input hidden value="${u.idURL}" name="idurl">
+                                                <button class="btn btn-success" type="submit" form="shorturluse">
+                                                    ${u.shortUrl}
                                                 </button>
                                             </td>
                                         </form>
@@ -124,6 +127,7 @@
                                         <#else>
                                         </#if>
                                     </tr>
+                                    </#list>
                                     </tbody>
                                 </table>
                             </div>

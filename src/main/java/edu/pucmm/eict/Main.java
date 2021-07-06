@@ -36,17 +36,16 @@ public class Main {
 
         }).start(7000);
 
+        new UrlController(app).routes();
+        new UserController(app).routes();
 
         app.get("/", ctx -> {
-           ctx.redirect("/home");
+            ctx.redirect("/home");
         });
 
         app.error(404, ctx -> {
             ctx.redirect("/404.html");
         });
-
-        new UserController(app).routes();
-        new UrlController(app).routes();
     }
 
 }

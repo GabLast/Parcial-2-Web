@@ -54,6 +54,8 @@ public class UrlServices extends DBEntityManager<Url> {
                 nueva = new Url(url, newUrl, user);
             }
 
+            UrlServices.getInstancia().insert(nueva);
+
             return nueva;
         }
     }
