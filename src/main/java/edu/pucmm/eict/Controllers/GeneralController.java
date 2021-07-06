@@ -2,10 +2,6 @@ package edu.pucmm.eict.Controllers;
 
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
-import edu.pucmm.eict.Services.UrlServices;
-
-import java.util.HashMap;
-
 public class GeneralController {
 
     private static GeneralController instancia;
@@ -19,6 +15,16 @@ public class GeneralController {
 
     private Usuario user = null;
     private String requestedURL = "";
+    private Url lastURLShortened = null;
+
+
+    public Url getLastURLShortened() {
+        return lastURLShortened;
+    }
+
+    public void setLastURLShortened(Url lastURLShortened) {
+        this.lastURLShortened = lastURLShortened;
+    }
 
     public Usuario getUser() {
         return user;

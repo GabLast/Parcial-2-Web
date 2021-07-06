@@ -5,6 +5,9 @@ import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import org.jasypt.util.text.StrongTextEncryptor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class UserController {
@@ -39,7 +42,8 @@ public class UserController {
 
                     if(user == null)
                     {
-                        throw new RuntimeException("Los datos ingresados fueron erróneos");
+                        System.out.println("El usuario o la contraseña son erróneos");
+                        ctx.redirect("/user/login");
                     }
                     else {
                         ctx.sessionAttribute("usuario", user);
@@ -55,6 +59,7 @@ public class UserController {
                                 ctx.cookie("rememberme", myEncryptedText , 604800);
                             }
                         }
+
                         if(GeneralController.getInstancia().getRequestedURL().equalsIgnoreCase(""))
                         {
                             ctx.redirect("/");
@@ -68,7 +73,9 @@ public class UserController {
                 });
 
                 get("/sign-in", ctx -> {
-
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Sign-Up");
+                    ctx.render("/templates/RegistrarUsuario.ftl", freeMarkerVars);
                 });
 
                 post("/sign-in", ctx -> {
@@ -80,10 +87,12 @@ public class UserController {
                         {
                             ctx.redirect("/user/login");
                         }else{
-                            throw new RuntimeException("Hubo un problema al registrar el usuario.");
+                            System.out.println("Hubo un problema al registrar el usuario.");
+                            ctx.redirect("/user/sign-in");
                         }
                     }else{
-                        throw new RuntimeException("El usuario digitado ya está en uso");
+                        System.out.println("El usuario digitado ya está en uso");
+                        ctx.redirect("/user/sign-in");
                     }
                 });
             });

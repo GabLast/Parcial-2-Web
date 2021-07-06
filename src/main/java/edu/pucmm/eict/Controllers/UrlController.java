@@ -9,6 +9,8 @@ import io.javalin.Javalin;
 import org.jasypt.util.text.StrongTextEncryptor;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,12 +45,31 @@ public class UrlController {
 
 
                 get("/", ctx -> {
-                    ctx.redirect("/home/acortar");
+                    ctx.redirect("/home/acortar/view_page/1");
                 });
 
-                get("/acortar", ctx -> {
+                get("/acortar/view_page/:page", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Home");
+                    int page = ctx.pathParam("page", Integer.class).get();
+
                     freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+
+                    int pageSize = 10;
+                    EntityManager em = UrlServices.getInstancia().getEntityManager();
+                    String count = "Select count (p.idURL) from Url p where p.borrado = 0";
+                    Query countQuery = em.createQuery(count);
+                    Long countResults = (Long) countQuery.getSingleResult();
+                    int totalPags = (int) (Math.ceil(((float)countResults / (float)pageSize)));
+                    freeMarkerVars.put("paginas", totalPags);
+
+                    if (GeneralController.getInstancia().getLastURLShortened() != null)
+                    {
+                        freeMarkerVars.put("url", GeneralController.getInstancia().getLastURLShortened());
+                    }
+
+                    freeMarkerVars.put("urls", UrlServices.getInstancia().getUrlPaginated(page));
+
                     ctx.render("/templates/Home.ftl", freeMarkerVars);
                 });
 
@@ -60,6 +81,10 @@ public class UrlController {
                     String temp = UserAgent.getNavegador(aux);
                     String ip = ctx.req.getRemoteAddr();
                     ctx.result(generated.getShortUrl() + "\n\n" + aux + "\n\n" + temp + "\n\n" + UserAgent.getSistemaOperativo(aux) + "\n\n" + ip);
+
+                    GeneralController.getInstancia().setLastURLShortened(generated);
+
+                    ctx.redirect("/home/acortar/view_page/1");
                 });
 
             });

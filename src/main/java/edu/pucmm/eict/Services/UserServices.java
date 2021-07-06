@@ -2,11 +2,11 @@ package edu.pucmm.eict.Services;
 
 import edu.pucmm.eict.Database.DBEntityManager;
 import edu.pucmm.eict.Models.Usuario;
-import org.h2.engine.User;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class UserServices extends DBEntityManager<Usuario> {
 
@@ -29,7 +29,7 @@ public class UserServices extends DBEntityManager<Usuario> {
         String encryptedPassword = passwordEncryptor.encryptPassword("admin");
         Usuario admin = new Usuario("admin", encryptedPassword, 1);
         encryptedPassword = passwordEncryptor.encryptPassword("123");
-        Usuario yo = new Usuario("gabriel", encryptedPassword, 0);
+        Usuario yo = new Usuario("gab", encryptedPassword, 0);
         UserServices.getInstancia().insert(admin);
         UserServices.getInstancia().insert(yo);
     }
@@ -38,7 +38,16 @@ public class UserServices extends DBEntityManager<Usuario> {
         EntityManager em = getEntityManager();
         Query query = em.createQuery("SELECT u FROM Usuario u where u.username = :username", Usuario.class);
         query.setParameter("username", username);
-        return (Usuario) query.getResultList().get(0);
+
+        List<Usuario> results = query.getResultList();
+
+        if(results.size() > 0)
+        {
+            return results.get(0);
+        }else {
+            return null;
+        }
+
     }
 
     public Usuario login(String username, String password) {

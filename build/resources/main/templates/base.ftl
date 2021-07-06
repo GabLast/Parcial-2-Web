@@ -21,11 +21,20 @@
     </head>
     <body>
     <style>
-        html, body{
+        html, body {
             background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/19/78/OSjfwn.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
+        }
+        .btn-eliminar {
+            background-color: darkred !important;
+            color: whitesmoke !important;
+        }
+
+        .btn-custom1 {
+            background-color: dodgerblue !important;
+            color: whitesmoke !important;
         }
     </style>
     <#--body here-->
@@ -38,6 +47,7 @@
     <#else>
         <#include "normalNavBar.ftl">
     </#if>
+    <br><br><br>
     <@page_body/>
     <#--scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

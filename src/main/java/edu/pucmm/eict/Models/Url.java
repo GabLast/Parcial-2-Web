@@ -15,7 +15,9 @@ public class Url implements Serializable {
     private String url;
     @NotNull
     private String shortUrl;
-
+    @NotNull
+    @Column(columnDefinition = "int default 0")
+    private int borrado;
     @ManyToOne
     private Usuario user;
 
@@ -75,5 +77,13 @@ public class Url implements Serializable {
 
     public void setMisdetalles(Set<DetallesURL> misdetalles) {
         this.misdetalles = misdetalles;
+    }
+
+    public int getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(int borrado) {
+        this.borrado = borrado;
     }
 }
