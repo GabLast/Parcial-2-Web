@@ -6,6 +6,7 @@ import edu.pucmm.eict.Database.DBEntityManager;
 import edu.pucmm.eict.Models.Url;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.net.*;
 import java.util.List;
@@ -74,5 +75,15 @@ public class UrlServices extends DBEntityManager<Url> {
         List<Url> lista = selectQuery.getResultList();
 
         return lista;
+    }
+
+    public Url findUrlById(Long id){
+        Query query = getEntityManager().createQuery("Select u from Url u where u.idURL =:id");
+        query.setParameter("id", id);
+        try{
+            return (Url) query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 }

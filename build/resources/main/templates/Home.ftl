@@ -111,24 +111,45 @@
                                                                 <a href="/home/view-url/${u.idURL}">
                                                                     <button class="btn btn-sm btn-custom1">
 
-                                                                        <span class="material-icons">visibility</span>
-                                                                    </button>
-                                                                </a>
-                                                            </div>
-                                                            <#if usuario.admin == 1>
-                                                                <div class="col-md-6">
-                                                                    <form id="delete${u.idURL}" method="post"
-                                                                          action="/home/delete">
-                                                                        <input hidden value="${u.idURL}" name="url">
-                                                                        <button class="btn btn-success btn-sm btn-eliminar"
-                                                                                type="submit"
-                                                                                form="delete${u.idURL}">
-                                                                            <span class="material-icons">delete</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                            <#else>
-                                                            </#if>
+                                        </#if>
+                                        <th scope="col">Estadisticas</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-center table-bordered">
+                                    <#list urls as u>
+                                    <tr class="table-secondary">
+                                        <td>${u.idURL}</td>
+                                        <td>${u.url}</td>
+                                        <form id="shorturluse" method="POST" action="/home/use-shorturl">
+                                            <td>
+                                                <input hidden value="${u.idURL}" name="idurl">
+                                                <button class="btn btn-success" type="submit">
+                                                    ${u.shortUrl}
+                                                </button>
+                                            </td>
+                                        </form>
+                                        <td>
+                                            <form id="resumenURL" method="GET" action="/home/resumen/${u.idURL}">
+                                                <button class="btn btn-dark" type="submit">Resumen</button>
+                                            </form>
+                                        </td>
+                                        <#if usuario?has_content>
+                                            <td>
+                                                <div class="row justify-content-evenly">
+                                                    <div class="col-md-6">
+                                                        <a href="">
+                                                            <button class="btn btn-sm btn-custom1">
+                                                                <span class="material-icons">visibility</span>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                    <#if usuario.admin == 1>
+                                                        <div class="col-md-6">
+                                                            <button class="btn btn-success btn-sm btn-eliminar"
+                                                                    type="submit"
+                                                                    form="">
+                                                                <span class="material-icons">delete</span>
+                                                            </button>
                                                         </div>
                                                     </td>
                                                 <#else>
