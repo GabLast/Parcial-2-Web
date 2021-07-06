@@ -86,31 +86,6 @@
                                                 <th scope="col"></th>
                                             <#else>
 
-                                            </#if>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="text-center table-bordered">
-                                        <#list urls as u>
-                                            <tr class="table-secondary">
-                                                <td>${u.idURL}</td>
-                                                <td>${u.url}</td>
-                                                <form id="shorturluse${u.idURL}" method="POST"
-                                                      action="/home/use-shorturl">
-                                                    <td>
-                                                        <input hidden value="${u.idURL}" name="idurl">
-                                                        <button class="btn btn-success" type="submit"
-                                                                form="shorturluse${u.idURL}">
-                                                            ${u.shortUrl}
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <#if usuario?has_content>
-                                                    <td>
-                                                        <div class="row justify-content-evenly">
-                                                            <div class="col-md-6">
-                                                                <a href="/home/view-url/${u.idURL}">
-                                                                    <button class="btn btn-sm btn-custom1">
-
                                         </#if>
                                         <th scope="col">Estadisticas</th>
                                     </tr>
@@ -151,9 +126,10 @@
                                                                 <span class="material-icons">delete</span>
                                                             </button>
                                                         </div>
-                                                    </td>
-                                                <#else>
-                                                </#if>
+
+                                               </#if>
+                                            </td>
+                                              </#if>
                                             </tr>
                                         </#list>
                                         </tbody>

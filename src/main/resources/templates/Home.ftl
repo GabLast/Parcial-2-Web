@@ -126,9 +126,10 @@
                                                                 <span class="material-icons">delete</span>
                                                             </button>
                                                         </div>
-                                                    </td>
-                                                <#else>
-                                                </#if>
+
+                                               </#if>
+                                            </td>
+                                              </#if>
                                             </tr>
                                         </#list>
                                         </tbody>

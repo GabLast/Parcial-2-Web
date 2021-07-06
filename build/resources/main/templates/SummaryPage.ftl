@@ -37,7 +37,6 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-
                 var data = google.visualization.arrayToDataTable([
                     ['Sistema Operativo', 'Visitas'],
                     ['Windows 10', ${windows10}],
@@ -47,7 +46,6 @@
                     ['Android 8', ${android8}],
                     ['Android 9', ${android9}]
                 ]);
-
                 var options = {
                     title: 'Visitas por Sistemas Operativos',
                     width: 650,
@@ -64,19 +62,15 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-
                 var data = google.visualization.arrayToDataTable([
                     ['Fechas', 'Visitas'],
                     ['Julio', ${Date}],
 
                 ]);
-
                 var options = {
                     title: 'Visitas por Fecha',
                     width: 650,
                     height: 450,
-                    pieHole: 0.4,
-
                 };
                 var chart = new google.visualization.BarChart(document.getElementById('barchart'));
                 chart.draw(data, options);
@@ -91,18 +85,13 @@
             <div class="col-sm">
                 <div id="piechart" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
             </div>
-
-
             <div class="col-sm">
                 <div id="piechart2" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
             </div>
-
-
             <div class="col-sm">
                 <div id="barchart" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
             </div>
         </div>
-
     </div>
     </body>
 </#macro>

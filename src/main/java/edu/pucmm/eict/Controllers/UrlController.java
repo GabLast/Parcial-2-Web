@@ -3,6 +3,7 @@ package edu.pucmm.eict.Controllers;
 import edu.pucmm.eict.Helpers.UserAgent;
 import edu.pucmm.eict.Models.DetallesURL;
 import edu.pucmm.eict.Models.Url;
+import edu.pucmm.eict.Models.Usuario;
 import edu.pucmm.eict.Services.DetailsUrlServices;
 import edu.pucmm.eict.Services.UrlServices;
 import edu.pucmm.eict.Services.UserServices;
