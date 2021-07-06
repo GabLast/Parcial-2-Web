@@ -109,6 +109,23 @@ public class UrlController {
                     ctx.redirect("/");
                 });
 
+                get("/view-url/:id", ctx -> {
+                    long id = ctx.pathParam("id", Long.class).get();
+
+                    Url url = UrlServices.getInstancia().find(id);
+
+                    if(url != null)
+                    {
+                        Map<String, Object> freeMarkerVars = new HashMap<>();
+                        freeMarkerVars.put("title", "Estad&iacute;sticas");
+                    }else {
+                        System.out.println("Url no existe.");
+                    }
+
+                    ctx.result("no implementado");
+
+                });
+
                 post("/delete", ctx -> {
                     long id = ctx.formParam("url", Long.class).get();
 
