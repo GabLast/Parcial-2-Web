@@ -76,14 +76,4 @@ public class UrlServices extends DBEntityManager<Url> {
 
         return lista;
     }
-
-    public Url findUrlById(Long id){
-        Query query = getEntityManager().createQuery("Select u from Url u where u.idURL =:id");
-        query.setParameter("id", id);
-        try{
-            return (Url) query.getSingleResult();
-        }catch(NoResultException e){
-            return null;
-        }
-    }
 }

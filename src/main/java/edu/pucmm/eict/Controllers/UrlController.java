@@ -25,6 +25,7 @@ public class UrlController {
     public UrlController(Javalin app) {
         this.app = app;
     }
+
     public void routes() {
 
         app.routes(() -> {
@@ -61,11 +62,10 @@ public class UrlController {
                     String count = "Select count (p.idURL) from Url p where p.borrado = 0";
                     Query countQuery = em.createQuery(count);
                     Long countResults = (Long) countQuery.getSingleResult();
-                    int totalPags = (int) (Math.ceil(((float)countResults / (float)pageSize)));
+                    int totalPags = (int) (Math.ceil(((float) countResults / (float) pageSize)));
                     freeMarkerVars.put("paginas", totalPags);
 
-                    if (GeneralController.getInstancia().getLastURLShortened() != null)
-                    {
+                    if (GeneralController.getInstancia().getLastURLShortened() != null) {
                         freeMarkerVars.put("url", GeneralController.getInstancia().getLastURLShortened());
                     }
 
@@ -74,25 +74,13 @@ public class UrlController {
                     ctx.render("/templates/Home.ftl", freeMarkerVars);
                 });
 
-                get("/resumen/:id" , ctx -> {
-                    Long urlid = ctx.pathParam("id", Long.class).get();
-                    Url url = UrlServices.getInstancia().findUrlById(urlid);
-                    System.out.println(url);
-                    String shortURL = url.getShortUrl();
-                    Map<String, Object> attributes = DetallesController.getInstance().getStats(shortURL);
-                    attributes.put("title", "Resumen");
-
-                    ctx.render("/templates/SummaryPage.ftl" , attributes);
-                });
-
                 post("/acortar", ctx -> {
                     String url = ctx.formParam("originalURL");
                     Url generated;
 
-                    if(GeneralController.getInstancia().getUser() != null)
-                    {
+                    if (GeneralController.getInstancia().getUser() != null) {
                         generated = UrlServices.getInstancia().generateShortURL(url, GeneralController.getInstancia().getUser());
-                    }else {
+                    } else {
                         generated = UrlServices.getInstancia().generateShortURL(url, null);
                     }
 
@@ -103,16 +91,15 @@ public class UrlController {
 
                 post("/use-shorturl", ctx -> {
                     long id = ctx.formParam("idurl", Long.class).get();
-                     System.out.print(id + "    ");
+                    System.out.print(id + "    ");
                     String useragent = ctx.req.getHeader("User-Agent");
                     String ip = ctx.req.getRemoteAddr();
 
                     Url url = UrlServices.getInstancia().find(id);
-                    if(url != null)
-                    {
+                    if (url != null) {
                         DetallesURL nuevo = new DetallesURL(UserAgent.getNavegador(useragent), ip, UserAgent.getSistemaOperativo(useragent), url);
                         DetailsUrlServices.getInstancia().insert(nuevo);
-                    }else {
+                    } else {
                         System.out.println("Url no existe.");
                     }
 
@@ -120,31 +107,32 @@ public class UrlController {
                 });
 
                 get("/view-url/:id", ctx -> {
-                    long id = ctx.pathParam("id", Long.class).get();
+                    Long id = ctx.pathParam("id", Long.class).get();
 
                     Url url = UrlServices.getInstancia().find(id);
 
-                    if(url != null)
-                    {
-                        Map<String, Object> freeMarkerVars = new HashMap<>();
-                        freeMarkerVars.put("title", "Estad&iacute;sticas");
-                    }else {
+                    if (url != null) {
+                        String shortURL = url.getShortUrl();
+                        Map<String, Object> attributes = DetallesController.getInstance().getStats(shortURL);
+                        attributes.put("title", "Estad&iacute;sticas");
+                        attributes.put("usuario", GeneralController.getInstancia().getUser());
+                        ctx.render("/templates/SummaryPage.ftl" , attributes);
+                    } else {
                         System.out.println("Url no existe.");
+                        ctx.render("/templates/No-autorizado.ftl");
                     }
 
-                    ctx.result("no implementado");
 
                 });
 
-                post("/delete", ctx -> {
-                    long id = ctx.formParam("url", Long.class).get();
+                post("/delete/:id", ctx -> {
+                    long id = ctx.pathParam("id", Long.class).get();
 
                     Url url = UrlServices.getInstancia().find(id);
-                    if(url != null)
-                    {
+                    if (url != null) {
                         url.setBorrado(1);
                         UrlServices.getInstancia().update(url);
-                    }else {
+                    } else {
                         System.out.println("Url no existe.");
                     }
 
@@ -160,7 +148,7 @@ public class UrlController {
                     if (GeneralController.getInstancia().getUser() == null) {
                         GeneralController.getInstancia().setRequestedURL(ctx.req.getRequestURI());
                         ctx.redirect("/Login.html");
-                    }else if (GeneralController.getInstancia().getUser().getAdmin() == 0){
+                    } else if (GeneralController.getInstancia().getUser().getAdmin() == 0) {
                         ctx.redirect("/error/not-authorized");
                     }
                 });
@@ -180,7 +168,7 @@ public class UrlController {
                     String count = "Select count (p.idUser) from Usuario p where p.borrado = 0";
                     Query countQuery = em.createQuery(count);
                     Long countResults = (Long) countQuery.getSingleResult();
-                    int totalPags = (int) (Math.ceil(((float)countResults / (float)pageSize)));
+                    int totalPags = (int) (Math.ceil(((float) countResults / (float) pageSize)));
                     freeMarkerVars.put("paginas", totalPags);
 
                     freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
@@ -193,11 +181,10 @@ public class UrlController {
                     long id = ctx.formParam("iduser", Long.class).get();
 
                     Usuario user = UserServices.getInstancia().find(id);
-                    if(user != null)
-                    {
+                    if (user != null) {
                         user.setAdmin(1);
                         UserServices.getInstancia().update(user);
-                    }else {
+                    } else {
                         System.out.println("Usuario no existe.");
                     }
 
@@ -208,11 +195,10 @@ public class UrlController {
                     long id = ctx.formParam("iduser", Long.class).get();
 
                     Usuario user = UserServices.getInstancia().find(id);
-                    if(user != null)
-                    {
+                    if (user != null) {
                         user.setBorrado(1);
                         UserServices.getInstancia().update(user);
-                    }else {
+                    } else {
                         System.out.println("Usuario no existe.");
                     }
 

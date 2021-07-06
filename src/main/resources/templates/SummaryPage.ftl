@@ -1,12 +1,12 @@
 <#include "base.ftl">
 <#macro page_head>
     <head>
-         <#if title?has_content>
-        <title>${title}</title>
-    </#if>
+        <#if title?has_content>
+            <title>${title}</title>
+        </#if>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
-            google.charts.load('current', {'packages':['corechart']});
+            google.charts.load('current', {'packages': ['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
@@ -25,7 +25,7 @@
                     width: 650,
                     height: 450,
                     pieHole: 0.4,
-                    legend: { position: "none" },
+                    legend: {position: "none"},
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -33,7 +33,7 @@
             }
         </script>
         <script type="text/javascript">
-            google.charts.load('current', {'packages':['corechart']});
+            google.charts.load('current', {'packages': ['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
@@ -58,7 +58,7 @@
             }
         </script>
         <script type="text/javascript">
-            google.charts.load('current', {'packages':['corechart']});
+            google.charts.load('current', {'packages': ['corechart']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
@@ -80,19 +80,35 @@
 </#macro>
 <#macro page_body>
     <body>
-    <div class="container-fluid">
-        <div class="row row-cols-2">
-            <div class="col-sm">
-                <div id="piechart" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
-            </div>
-            <div class="col-sm">
-                <div id="piechart2" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
-            </div>
-            <div class="col-sm">
-                <div id="barchart" style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center" ></div>
+    <#if usuario?has_content>
+        <div class="container-fluid">
+            <div class="row row-cols-2">
+                <div class="col-sm">
+                    <div id="piechart"
+                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="piechart2"
+                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="barchart"
+                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
+                </div>
             </div>
         </div>
-    </div>
+    <#else>
+        <div class="row">
+            <div class="col-md-6 offset-md-1">
+                <h2 class="text-light">Usted no tiene permisos para acceder a este recurso
+                </h2>
+                <br>
+                <a href="/">
+                    <button class="btn btn-go-home btn-custom1">Volver al Inicio</button>
+                </a>
+            </div>
+        </div>
+    </#if>
     </body>
 </#macro>
 <@display_page/>
