@@ -65,8 +65,11 @@ public class UrlController {
                     int totalPags = (int) (Math.ceil(((float) countResults / (float) pageSize)));
                     freeMarkerVars.put("paginas", totalPags);
 
-                    if (GeneralController.getInstancia().getLastURLShortened() != null) {
-                        freeMarkerVars.put("url", GeneralController.getInstancia().getLastURLShortened());
+
+                    if (ctx.sessionAttribute("urlshort") != null) {
+                        freeMarkerVars.put("urlshort", ctx.sessionAttribute("urlshort"));
+                    } else if (GeneralController.getInstancia().getUser() != null) {
+                        freeMarkerVars.put("urlshort", UrlServices.getInstancia().getMyLastShortURL(GeneralController.getInstancia().getUser().getIdUser()).getShortUrl());
                     }
 
                     freeMarkerVars.put("urls", UrlServices.getInstancia().getUrlPaginated(page));
@@ -84,7 +87,7 @@ public class UrlController {
                         generated = UrlServices.getInstancia().generateShortURL(url, null);
                     }
 
-                    GeneralController.getInstancia().setLastURLShortened(generated);
+                    ctx.sessionAttribute("urlshort", generated.getShortUrl());
 
                     ctx.redirect("/home/acortar/view_page/1");
                 });
@@ -120,13 +123,12 @@ public class UrlController {
                         attributes.put("URL", url);
                         attributes.put("UrlShort", shortURL);
                         attributes.put("usuario", GeneralController.getInstancia().getUser());
-                        if(GeneralController.getInstancia().getCloudlink().isEmpty())
-                        {
+                        if (GeneralController.getInstancia().getCloudlink().isEmpty()) {
                             attributes.put("cloudlink", "no-cloud-domain-assigned/");
-                        }else {
+                        } else {
                             attributes.put("cloudlink", GeneralController.getInstancia().getCloudlink());
                         }
-                        ctx.render("/templates/SummaryPage.ftl" , attributes);
+                        ctx.render("/templates/SummaryPage.ftl", attributes);
                     } else {
                         System.out.println("Url no existe.");
                         ctx.render("/templates/No-autorizado.ftl");
@@ -192,10 +194,9 @@ public class UrlController {
 
                     Usuario user = UserServices.getInstancia().find(id);
                     if (user != null) {
-                        if(user.getAdmin() == 1)
-                        {
+                        if (user.getAdmin() == 1) {
                             user.setAdmin(0);
-                        }else {
+                        } else {
                             user.setAdmin(1);
                         }
                         UserServices.getInstancia().update(user);

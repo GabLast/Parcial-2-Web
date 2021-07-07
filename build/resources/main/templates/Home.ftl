@@ -15,14 +15,8 @@
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-7">
-                            <#if url?has_content>
-                                <input type="text" class="form-control" id="originalURL" name="originalURL"
-                                       value="${url.url}"
-                                       placeholder="https://www.google.com.do/" required>
-                            <#else>
-                                <input type="text" class="form-control" id="originalURL" name="originalURL"
-                                       placeholder="https://www.google.com.do/" required>
-                            </#if>
+                            <input type="text" class="form-control" id="originalURL" name="originalURL"
+                                   placeholder="https://www.google.com.do/" required>
                         </div>
                         <div class="col md-1">
                             <button class="btn btn-group-lg btn-custom1" type="submit" form="acortarurlform">
@@ -34,10 +28,10 @@
                     </div>
                 </form>
                 <br><br>
-                <#if url?has_content>
+                <#if urlshort?has_content>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
-                            <input type="text" class="form-control" value="${url.shortUrl}"
+                            <input type="text" class="form-control" value="${urlshort}"
                                    placeholder="https://www.my.url/" readonly>
                         </div>
                     </div>
@@ -106,8 +100,10 @@
                                                     <td>
                                                         <div class="row justify-content-evenly">
                                                             <div class="col-md-6">
-                                                                <form id="resumenURL" method="GET" action="/home/view-url/${u.idURL}">
-                                                                  <button class="btn btn-sm btn-custom1" type="submit">
+                                                                <form id="resumenURL" method="GET"
+                                                                      action="/home/view-url/${u.idURL}">
+                                                                    <button class="btn btn-sm btn-custom1"
+                                                                            type="submit">
                                                                         <span class="material-icons">visibility</span>
                                                                     </button>
 
@@ -115,7 +111,8 @@
                                                             </div>
                                                             <#if usuario.admin == 1>
                                                                 <div class="col-md-6">
-                                                                    <form method="post" action="/home/delete/${u.idURL}">
+                                                                    <form method="post"
+                                                                          action="/home/delete/${u.idURL}">
                                                                         <button class="btn btn-success btn-sm btn-eliminar"
                                                                                 type="submit">
                                                                             <span class="material-icons">delete</span>

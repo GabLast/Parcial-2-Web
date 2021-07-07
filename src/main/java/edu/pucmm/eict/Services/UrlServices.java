@@ -76,4 +76,11 @@ public class UrlServices extends DBEntityManager<Url> {
 
         return lista;
     }
+
+    public Url getMyLastShortURL(long id) {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("SELECT u FROM Url u where u.user.idUser = :id order by u.idURL desc", Url.class);
+        query.setParameter("id", id);
+        return (Url) query.getResultList().get(0);
+    }
 }
