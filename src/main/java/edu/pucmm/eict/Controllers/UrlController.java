@@ -103,7 +103,8 @@ public class UrlController {
                         System.out.println("Url no existe.");
                     }
 
-                    ctx.redirect("/");
+//                    ctx.redirect("/");
+                    ctx.redirect(url.getUrl());
                 });
 
                 get("/view-url/:id", ctx -> {
@@ -185,7 +186,12 @@ public class UrlController {
 
                     Usuario user = UserServices.getInstancia().find(id);
                     if (user != null) {
-                        user.setAdmin(1);
+                        if(user.getAdmin() == 1)
+                        {
+                            user.setAdmin(0);
+                        }else {
+                            user.setAdmin(1);
+                        }
                         UserServices.getInstancia().update(user);
                     } else {
                         System.out.println("Usuario no existe.");

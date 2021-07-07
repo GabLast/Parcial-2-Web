@@ -56,13 +56,23 @@
                                             <td>
                                                 <div class="row justify-content-evenly">
                                                     <div class="col-md-6">
-                                                        <form id="giveadmin${u.idUser}" method="post" action="/administracion/user/give-admin">
-                                                            <input hidden value="${u.idUser}" name="iduser">
-                                                            <button class="btn btn-sm btn-custom1"
-                                                                    type="submit" form="giveadmin${u.idUser}">
-                                                                <span class="material-icons">admin_panel_settings</span>
-                                                            </button>
-                                                        </form>
+                                                        <#if u.admin==0>
+                                                            <form id="giveadmin${u.idUser}" method="post" action="/administracion/user/give-admin">
+                                                                <input hidden value="${u.idUser}" name="iduser">
+                                                                <button class="btn btn-sm btn-custom1"
+                                                                        type="submit" form="giveadmin${u.idUser}">
+                                                                    <span class="material-icons">admin_panel_settings</span>
+                                                                </button>
+                                                            </form>
+                                                        <#else>
+                                                            <form id="giveadmin${u.idUser}" method="post" action="/administracion/user/give-admin">
+                                                                <input hidden value="${u.idUser}" name="iduser">
+                                                                <button class="btn btn-sm btn-eliminar"
+                                                                        type="submit" form="giveadmin${u.idUser}">
+                                                                    <span class="material-icons">admin_panel_settings</span>
+                                                                </button>
+                                                            </form>
+                                                        </#if>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <form id="delete${u.idUser}" method="post" action="/administracion/user/delete">

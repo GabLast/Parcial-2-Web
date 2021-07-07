@@ -67,7 +67,7 @@ public class UrlServices extends DBEntityManager<Url> {
         int rowsPerPage = 10;
         int selectedPage = page;
 
-        Query selectQuery = em.createQuery("select p From Url p where p.borrado = 0");
+        Query selectQuery = em.createQuery("select p From Url p where p.borrado = 0 order by p.idURL desc");
         selectQuery.setFirstResult((selectedPage - 1) * rowsPerPage);
         selectQuery.setMaxResults(rowsPerPage);
 

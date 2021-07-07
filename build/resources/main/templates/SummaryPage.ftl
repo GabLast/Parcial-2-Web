@@ -24,8 +24,8 @@
                     title: 'Visitas por navegador',
                     width: 650,
                     height: 450,
-                    pieHole: 0.4,
-                    legend: {position: "none"},
+                    pieHole: 0.4
+                    /*legend: {position: "none"}*/,
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -81,28 +81,61 @@
 <#macro page_body>
     <body>
     <#if usuario?has_content>
-        <div class="header m-5 text-light">
-            <h2>Resumen de Url: ${UrlShort} </h2>
-        </div>
         <div class="container-fluid">
-            <div class="row row-cols-2">
-             <!--   <div class="col-sm">
-                    <div id="piechart"
-                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
-                </div> -->
-               <!-- <div class="col-sm">
-                    <div id="piechart2"
-                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
-                </div>-->
-                <div class="col-sm">
-                    <div id="barchart"
-                         style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
-                </div>
-                    <div class="col-lg">
-                        <div id="qrcode${URL.url?substring(12)}"></div>
-                        <img alt="qrcode" src="https://quickchart.io/qr?text=https://localhost:7000/home/view-url/${URL.idURL}" />
-                        <p class="text-light">Ver mas</p>
+            <div class="row-cols-auto">
+                <div class="col-md-5 align-items-center">
+                    <div class="header m-5 text-light">
+                        <h2>Resumen de Url: ${UrlShort} </h2>
                     </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2">
+                <div class="col-md-6">
+                    <div class="container-fluid ">
+                        <div class="col-sm">
+                            <div id="piechart"
+                                 style="display: flex; text-align: center ; justify-content: center"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="container-fluid">
+                        <div class="col-sm">
+                            <div id="piechart2"
+                                 style="display: flex; text-align: center ; justify-content: center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <br>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="container-fluid">
+                        <div class="col-sm">
+                            <div id="barchart"
+                                 style="display: flex; text-align: center ; justify-content: center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="container-fluid">
+                        <div id="qrcode${URL.url?substring(12)}"></div>
+                        <img alt="qrcode" style="margin-left: 135px"
+                             src="https://quickchart.io/qr?text=https://localhost:7000/home/view-url/${URL.idURL}"/>
+                        <p style="margin-left: 135px" class="text-light">Ver m&aacute;s</p>
+                    </div>
+                </div>
             </div>
         </div>
     <#else>
@@ -120,3 +153,4 @@
     </body>
 </#macro>
 <@display_page/>
+

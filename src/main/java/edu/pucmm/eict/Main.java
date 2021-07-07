@@ -1,6 +1,6 @@
 package edu.pucmm.eict;
 
-import edu.pucmm.eict.Controllers.GeneralController;
+
 import edu.pucmm.eict.Controllers.UrlController;
 import edu.pucmm.eict.Controllers.UserController;
 import edu.pucmm.eict.Database.DBConfig;
@@ -8,22 +8,26 @@ import edu.pucmm.eict.Database.DBConnection;
 import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
-import io.javalin.plugin.rendering.JavalinRenderer;
-import io.javalin.plugin.rendering.template.JavalinFreemarker;
-import org.jasypt.util.text.StrongTextEncryptor;
-
-import static io.javalin.apibuilder.ApiBuilder.before;
 
 public class Main {
 
+    private static String modoConexion = "";
+
     public static void main(String[] args) {
 
-        //******************************************************//
-        //Base de datos
-        DBConfig.startDb();
-        //Prueba de Conexión.
-        DBConnection.getInstancia().testConexion();
-        //******************************************************//
+        if(args.length >= 1){
+            modoConexion = args[0];
+            System.out.println("Modo de Operacion: "+modoConexion);
+        }
+
+        if(modoConexion.isEmpty()) {
+            //******************************************************//
+            //Base de datos
+            DBConfig.startDb();
+            //Prueba de Conexión.
+            DBConnection.getInstancia().testConexion();
+            //******************************************************//
+        }
 
         if (UserServices.getInstancia().findAll().isEmpty()) {
             UserServices.init();
@@ -34,7 +38,7 @@ public class Main {
             config.registerPlugin(new RouteOverviewPlugin("rutas"));
             config.enableCorsForAllOrigins();
 
-        }).start(7000);
+        }).start(getHerokuAssignedPort());
 
         new UrlController(app).routes();
         new UserController(app).routes();
@@ -46,6 +50,18 @@ public class Main {
         app.error(404, ctx -> {
             ctx.redirect("/404.html");
         });
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 7000; //Retorna el puerto por defecto en caso de no estar en Heroku.
+    }
+
+    public static String getModoConexion(){
+        return modoConexion;
     }
 
 }

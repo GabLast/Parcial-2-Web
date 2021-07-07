@@ -1,8 +1,13 @@
 package edu.pucmm.eict.Database;
 
+import edu.pucmm.eict.Main;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class DBEntityManager<T> {
     private static EntityManagerFactory emf;
@@ -11,8 +16,13 @@ public class DBEntityManager<T> {
 
     public DBEntityManager(Class<T> claseEntidad) {
 
-        emf = Persistence.createEntityManagerFactory("urlshortener");
-
+        if(emf == null) {
+            if(Main.getModoConexion().equalsIgnoreCase("Heroku")){
+                emf = getConfiguracionBaseDatosHeroku();
+            } else {
+                emf = Persistence.createEntityManagerFactory("urlshortener");
+            }
+        }
         this.claseEntidad = claseEntidad;
 
     }
@@ -84,5 +94,27 @@ public class DBEntityManager<T> {
         } finally {
             em.close();
         }
+    }
+
+    private EntityManagerFactory getConfiguracionBaseDatosHeroku(){
+        //Leyendo la información de la variable de ambiente de Heroku
+        String databaseUrl = System.getenv("DATABASE_URL");
+        StringTokenizer st = new StringTokenizer(databaseUrl, ":@/");
+        //Separando las información del conexión.
+        String dbVendor = st.nextToken();
+        String userName = st.nextToken();
+        String password = st.nextToken();
+        String host = st.nextToken();
+        String port = st.nextToken();
+        String databaseName = st.nextToken();
+        //creando la jbdc String
+        String jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s?sslmode=require", host, port, databaseName);
+        //pasando las propiedades.
+        Map<String, String> properties = new HashMap<>();
+        properties.put("javax.persistence.jdbc.url", jdbcUrl );
+        properties.put("javax.persistence.jdbc.user", userName );
+        properties.put("javax.persistence.jdbc.password", password );
+        //
+        return Persistence.createEntityManagerFactory("Heroku", properties);
     }
 }

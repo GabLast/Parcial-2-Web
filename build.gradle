@@ -23,6 +23,7 @@ dependencies {
     implementation group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
 	//Manejador de base de datos
     implementation 'com.h2database:h2:1.4.200'
+    implementation 'org.postgresql:postgresql:42.2.1'
     //Encriptacion
     implementation 'org.jasypt:jasypt:1.9.3'
 	//ORM - Hibernate
