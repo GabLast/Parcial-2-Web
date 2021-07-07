@@ -120,6 +120,12 @@ public class UrlController {
                         attributes.put("URL", url);
                         attributes.put("UrlShort", shortURL);
                         attributes.put("usuario", GeneralController.getInstancia().getUser());
+                        if(GeneralController.getInstancia().getCloudlink().isEmpty())
+                        {
+                            attributes.put("cloudlink", "no-cloud-domain-assigned/");
+                        }else {
+                            attributes.put("cloudlink", GeneralController.getInstancia().getCloudlink());
+                        }
                         ctx.render("/templates/SummaryPage.ftl" , attributes);
                     } else {
                         System.out.println("Url no existe.");

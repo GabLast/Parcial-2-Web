@@ -132,7 +132,7 @@
                     <div class="container-fluid">
                         <div id="qrcode${URL.url?substring(12)}"></div>
                         <img alt="qrcode" style="margin-left: 200px"
-                             src="https://quickchart.io/qr?text=https://localhost:7000/home/view-url/${URL.idURL}"/>
+                             src="https://quickchart.io/qr?text=${cloudlink}/home/view-url/${URL.idURL}"/>
                         <p style="margin-left: 200px" class="text-light">Ver m&aacute;s</p>
                     </div>
                 </div>

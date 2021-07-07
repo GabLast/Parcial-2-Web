@@ -1,6 +1,7 @@
 package edu.pucmm.eict;
 
 
+import edu.pucmm.eict.Controllers.GeneralController;
 import edu.pucmm.eict.Controllers.UrlController;
 import edu.pucmm.eict.Controllers.UserController;
 import edu.pucmm.eict.Database.DBConfig;
@@ -26,7 +27,10 @@ public class Main {
             DBConfig.startDb();
             //Prueba de Conexión.
             DBConnection.getInstancia().testConexion();
+            GeneralController.getInstancia().setCloudlink("https://localhost:7000");
             //******************************************************//
+        }else {
+            GeneralController.getInstancia().setCloudlink("https://parcial-2.projects-domain.me/");
         }
 
         if (UserServices.getInstancia().findAll().isEmpty()) {

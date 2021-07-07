@@ -16,7 +16,15 @@ public class GeneralController {
     private Usuario user = null;
     private String requestedURL = "";
     private Url lastURLShortened = null;
+    private String cloudlink = "";
 
+    public String getCloudlink() {
+        return cloudlink;
+    }
+
+    public void setCloudlink(String cloudlink) {
+        this.cloudlink = cloudlink;
+    }
 
     public Url getLastURLShortened() {
         return lastURLShortened;
