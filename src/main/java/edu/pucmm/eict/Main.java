@@ -27,7 +27,7 @@ public class Main {
             DBConfig.startDb();
             //Prueba de Conexión.
             DBConnection.getInstancia().testConexion();
-            GeneralController.getInstancia().setCloudlink("https://parcial-2.projects-domain.me/");
+            GeneralController.getInstancia().setCloudlink("https://parcial-2.projects-domain.me");
             //******************************************************//
         }else {
             GeneralController.getInstancia().setCloudlink("");
