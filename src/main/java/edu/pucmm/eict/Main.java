@@ -27,10 +27,10 @@ public class Main {
             DBConfig.startDb();
             //Prueba de Conexión.
             DBConnection.getInstancia().testConexion();
-            GeneralController.getInstancia().setCloudlink("https://localhost:7000");
+            GeneralController.getInstancia().setCloudlink("https://parcial-2.projects-domain.me/");
             //******************************************************//
         }else {
-            GeneralController.getInstancia().setCloudlink("https://parcial-2.projects-domain.me/");
+            GeneralController.getInstancia().setCloudlink("");
         }
 
         if (UserServices.getInstancia().findAll().isEmpty()) {
