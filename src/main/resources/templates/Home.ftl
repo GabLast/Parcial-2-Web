@@ -107,9 +107,10 @@
                                                         <div class="row justify-content-evenly">
                                                             <div class="col-md-6">
                                                                 <form id="resumenURL" method="GET" action="/home/view-url/${u.idURL}">
-                                                                    <button class="btn btn-sm btn-custom1" type="submit">
+                                                                  <button class="btn btn-sm btn-custom1" type="submit">
                                                                         <span class="material-icons">visibility</span>
                                                                     </button>
+
                                                                 </form>
                                                             </div>
                                                             <#if usuario.admin == 1>

@@ -115,6 +115,9 @@ public class UrlController {
                         String shortURL = url.getShortUrl();
                         Map<String, Object> attributes = DetallesController.getInstance().getStats(shortURL);
                         attributes.put("title", "Estad&iacute;sticas");
+                        attributes.put("id", id);
+                        attributes.put("URL", url);
+                        attributes.put("UrlShort", shortURL);
                         attributes.put("usuario", GeneralController.getInstancia().getUser());
                         ctx.render("/templates/SummaryPage.ftl" , attributes);
                     } else {

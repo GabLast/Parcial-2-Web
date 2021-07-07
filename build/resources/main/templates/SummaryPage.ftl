@@ -81,20 +81,28 @@
 <#macro page_body>
     <body>
     <#if usuario?has_content>
+        <div class="header m-5 text-light">
+            <h2>Resumen de Url: ${UrlShort} </h2>
+        </div>
         <div class="container-fluid">
             <div class="row row-cols-2">
-                <div class="col-sm">
+             <!--   <div class="col-sm">
                     <div id="piechart"
                          style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
-                </div>
-                <div class="col-sm">
+                </div> -->
+               <!-- <div class="col-sm">
                     <div id="piechart2"
                          style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
-                </div>
+                </div>-->
                 <div class="col-sm">
                     <div id="barchart"
                          style="width: 900px; height: 500px; display: flex; text-align: center ; justify-content: center"></div>
                 </div>
+                    <div class="col-lg">
+                        <div id="qrcode${URL.url?substring(12)}"></div>
+                        <img alt="qrcode" src="https://quickchart.io/qr?text=https://localhost:7000/home/view-url/${URL.idURL}" />
+                        <p class="text-light">Ver mas</p>
+                    </div>
             </div>
         </div>
     <#else>
