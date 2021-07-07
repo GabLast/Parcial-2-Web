@@ -68,8 +68,6 @@ public class UrlController {
 
                     if (ctx.sessionAttribute("urlshort") != null) {
                         freeMarkerVars.put("urlshort", ctx.sessionAttribute("urlshort"));
-                    } else if (GeneralController.getInstancia().getUser() != null) {
-                        freeMarkerVars.put("urlshort", UrlServices.getInstancia().getMyLastShortURL(GeneralController.getInstancia().getUser().getIdUser()).getShortUrl());
                     }
 
                     freeMarkerVars.put("urls", UrlServices.getInstancia().getUrlPaginated(page));

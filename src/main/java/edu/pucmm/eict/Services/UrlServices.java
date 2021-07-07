@@ -81,6 +81,13 @@ public class UrlServices extends DBEntityManager<Url> {
         EntityManager em = getEntityManager();
         Query query = em.createQuery("SELECT u FROM Url u where u.user.idUser = :id order by u.idURL desc", Url.class);
         query.setParameter("id", id);
-        return (Url) query.getResultList().get(0);
+        List<Url> lista = query.getResultList();
+        if(lista.size() > 0)
+        {
+            return lista.get(0);
+        }else {
+            return null;
+        }
+
     }
 }
