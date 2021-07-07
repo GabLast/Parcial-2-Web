@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <input type="text" class="form-control" value="${url.shortUrl}"
-                                   placeholder="https://www.my.url/" required>
+                                   placeholder="https://www.my.url/" readonly>
                         </div>
                     </div>
                 <#else>
