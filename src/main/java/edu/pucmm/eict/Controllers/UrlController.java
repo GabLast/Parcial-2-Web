@@ -57,6 +57,7 @@ public class UrlController {
                         DetailsUrlServices.getInstancia().insert(nuevo);
                     } else {
                         System.out.println("Url no existe.");
+                        ctx.redirect("/404.html");
                     }
 
                     ctx.redirect(url.getUrl());
