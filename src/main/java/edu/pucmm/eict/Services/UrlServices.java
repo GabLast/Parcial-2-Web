@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.net.*;
+import java.time.LocalTime;
 import java.util.List;
 
 public class UrlServices extends DBEntityManager<Url> {
@@ -43,10 +44,10 @@ public class UrlServices extends DBEntityManager<Url> {
             InetAddress ia = InetAddress.getByName(aux.getHost());
 
             Long random = Long.valueOf((long) (Math.random() * (9999999 - 0) + 0));
-            Long ipRandomized = Long.parseLong(ia.getHostAddress().replace(".", "") + random);
+            long ipRandomized = Long.parseLong(ia.getHostAddress().replace(".", "") + random);
             String shorturlsegment = Long.toHexString(ipRandomized);
 
-            String newUrl = dominio + shorturlsegment;
+            String newUrl =/* dominio +*/ shorturlsegment;
 
             if(user == null)
             {
@@ -77,10 +78,10 @@ public class UrlServices extends DBEntityManager<Url> {
         return lista;
     }
 
-    public Url getMyLastShortURL(long id) {
+    public Url getUrlByShortURL(String shorturl) {
         EntityManager em = getEntityManager();
-        Query query = em.createQuery("SELECT u FROM Url u where u.user.idUser = :id order by u.idURL desc", Url.class);
-        query.setParameter("id", id);
+        Query query = em.createQuery("SELECT u FROM Url u where u.shortUrl = :shorturl", Url.class);
+        query.setParameter("shorturl", shorturl);
         List<Url> lista = query.getResultList();
         if(lista.size() > 0)
         {

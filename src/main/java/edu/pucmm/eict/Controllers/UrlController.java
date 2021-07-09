@@ -43,6 +43,26 @@ public class UrlController {
 
             });
 
+            path("/use", () -> {
+
+                get("/:shorturl", ctx -> {
+                    String shorturl = ctx.pathParam("shorturl");
+//                    System.out.println("\n\nTEST: " + shorturl);
+                    String useragent = ctx.req.getHeader("User-Agent");
+                    String ip = ctx.req.getRemoteAddr();
+
+                    Url url = UrlServices.getInstancia().getUrlByShortURL(shorturl);
+                    if (url != null) {
+                        DetallesURL nuevo = new DetallesURL(UserAgent.getNavegador(useragent), ip, UserAgent.getSistemaOperativo(useragent), url);
+                        DetailsUrlServices.getInstancia().insert(nuevo);
+                    } else {
+                        System.out.println("Url no existe.");
+                    }
+
+                    ctx.redirect(url.getUrl());
+                });
+            });
+
             path("/home", () -> {
 
 
@@ -85,28 +105,11 @@ public class UrlController {
                         generated = UrlServices.getInstancia().generateShortURL(url, null);
                     }
 
-                    ctx.sessionAttribute("urlshort", generated.getShortUrl());
+                    ctx.sessionAttribute("urlshort", "https://apptest.projects-domain.me/use/" + generated.getShortUrl());
 
-                    ctx.redirect("/home/acortar/view_page/1");
+                    ctx.redirect("/");
                 });
 
-                post("/use-shorturl", ctx -> {
-                    long id = ctx.formParam("idurl", Long.class).get();
-                    System.out.print(id + "    ");
-                    String useragent = ctx.req.getHeader("User-Agent");
-                    String ip = ctx.req.getRemoteAddr();
-
-                    Url url = UrlServices.getInstancia().find(id);
-                    if (url != null) {
-                        DetallesURL nuevo = new DetallesURL(UserAgent.getNavegador(useragent), ip, UserAgent.getSistemaOperativo(useragent), url);
-                        DetailsUrlServices.getInstancia().insert(nuevo);
-                    } else {
-                        System.out.println("Url no existe.");
-                    }
-
-//                    ctx.redirect("/");
-                    ctx.redirect(url.getUrl());
-                });
 
                 get("/view-url/:id", ctx -> {
                     Long id = ctx.pathParam("id", Long.class).get();

@@ -31,8 +31,13 @@
                 <#if urlshort?has_content>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
-                            <input type="text" class="form-control" value="${urlshort}"
-                                   placeholder="https://www.my.url/" readonly>
+                            <form id="shorturluse" method="get" action="/use/${urlshort}">
+                                <td>
+                                    <button class="btn btn-success" type="submit">
+                                       ${urlshort}
+                                    </button>
+                                </td>
+                            </form>
                         </div>
                     </div>
                 <#else>
@@ -88,11 +93,10 @@
                                             <tr class="table-secondary">
                                                 <td>${u.idURL}</td>
                                                 <td>${u.url}</td>
-                                                <form id="shorturluse" method="POST" action="/home/use-shorturl">
+                                                <form id="shorturluse" method="get" action="/use/${u.shortUrl}">
                                                     <td>
-                                                        <input hidden value="${u.idURL}" name="idurl">
                                                         <button class="btn btn-success" type="submit">
-                                                            ${u.shortUrl}
+                                                            https://apptest.projects-domain.me/use/${u.shortUrl}
                                                         </button>
                                                     </td>
                                                 </form>
