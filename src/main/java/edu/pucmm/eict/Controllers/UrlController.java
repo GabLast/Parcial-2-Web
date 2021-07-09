@@ -106,7 +106,7 @@ public class UrlController {
                         generated = UrlServices.getInstancia().generateShortURL(url, null);
                     }
 
-                    ctx.sessionAttribute("urlshort", "https://apptest.projects-domain.me/use/" + generated.getShortUrl());
+                    ctx.sessionAttribute("urlshort",/* "https://apptest.projects-domain.me/use/" +*/ generated.getShortUrl());
 
                     ctx.redirect("/");
                 });

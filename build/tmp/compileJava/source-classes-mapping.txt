@@ -22,9 +22,9 @@ edu/pucmm/eict/Controllers/GeneralController.java
  edu.pucmm.eict.Controllers.GeneralController
 edu/pucmm/eict/Services/DetailsUrlServices.java
  edu.pucmm.eict.Services.DetailsUrlServices
-edu/pucmm/eict/Main.java
- edu.pucmm.eict.Main
 edu/pucmm/eict/Services/UrlServices.java
  edu.pucmm.eict.Services.UrlServices
+edu/pucmm/eict/Main.java
+ edu.pucmm.eict.Main
 edu/pucmm/eict/Controllers/UrlController.java
  edu.pucmm.eict.Controllers.UrlController
