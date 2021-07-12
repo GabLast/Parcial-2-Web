@@ -32,12 +32,13 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <label for="copyurl" class="col-form-label text-light">Enlace:</label>
-                            <input id="copyurl" type="text" class="form-control" value="https://apptest.projects-domain.me/use/${urlshort}"
-                                       placeholder="https://www.my.url/" readonly>
+                            <input id="copyurl" type="text" class="form-control"
+                                   value="https://apptest.projects-domain.me/use/${urlshort}"
+                                   placeholder="https://www.my.url/" readonly>
                             <br>
                             <form method="get" action="/use/${urlshort}">
                                 <button class="btn btn-success" type="submit">
-                                    https://apptest.projects-domain.me/use/${urlshort}
+                                    Visitar enlace
                                 </button>
                             </form>
                         </div>
