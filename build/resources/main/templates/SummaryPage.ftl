@@ -130,10 +130,10 @@
 
                 <div class="col-md-6">
                     <div class="container-fluid">
-                        <div id="qrcode${URL.url?substring(12)}"></div>
+                        <div id="qrcode${URL.shortUrl?substring(12)}"></div>
                         <img alt="qrcode" style="margin-left: 200px"
-                             src="https://quickchart.io/qr?text=${cloudlink}/home/view-url/${URL.idURL}"/>
-                        <p style="margin-left: 200px" class="text-light">Ver m&aacute;s</p>
+                             src="https://quickchart.io/qr?text=${cloudlink}/use/${URL.shortUrl}"/>
+                        <p style="margin-left: 200px" class="text-light">QR Code hacia URL Generada</p>
                     </div>
                 </div>
             </div>
