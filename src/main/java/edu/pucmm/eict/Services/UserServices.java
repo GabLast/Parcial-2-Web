@@ -25,7 +25,7 @@ public class UserServices extends DBEntityManager<Usuario> {
         return instancia;
     }
 
-    public static void init() {
+    public void init() {
         StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
         String encryptedPassword = passwordEncryptor.encryptPassword("admin");
         Usuario admin = new Usuario("admin", encryptedPassword, 1);

@@ -13,6 +13,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Final Ac&aacute;pites
+                    </a>
+                    <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/SinConexion-ShortURL.html">URLs Acortadas Sin Conexi&oacute;n</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         Administraci&oacute;n
                     </a>
                     <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">

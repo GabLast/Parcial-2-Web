@@ -92,6 +92,7 @@ public class UrlController {
                     }
 
                     freeMarkerVars.put("urls", UrlServices.getInstancia().getUrlPaginated(page));
+                    freeMarkerVars.put("cloudlink", GeneralController.getInstancia().getCloudlink());
 
                     ctx.render("/templates/Home.ftl", freeMarkerVars);
                 });

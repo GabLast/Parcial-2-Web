@@ -27,14 +27,14 @@ public class Main {
             DBConfig.startDb();
             //Prueba de Conexión.
             DBConnection.getInstancia().testConexion();
-            GeneralController.getInstancia().setCloudlink("https://apptest.projects-domain.me/");
+            GeneralController.getInstancia().setCloudlink("http://localhost:7000/");
             //******************************************************//
         }else {
             GeneralController.getInstancia().setCloudlink("");
         }
 
         if (UserServices.getInstancia().findAll().isEmpty()) {
-            UserServices.init();
+            UserServices.getInstancia().init();
         }
 
         Javalin app = Javalin.create(config -> {

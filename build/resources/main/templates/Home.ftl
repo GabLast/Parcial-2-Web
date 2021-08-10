@@ -3,6 +3,77 @@
     <#if title?has_content>
         <title>${title}</title>
     </#if>
+    <script>
+        //dependiendo el navegador busco la referencia del objeto.
+        var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB
+
+        //indicamos el nombre y la versión
+        var dataBase = indexedDB.open("finalweb", 1);
+
+
+        //se ejecuta la primera vez que se crea la estructura
+        //o se cambia la versión de la base de datos.
+        dataBase.onupgradeneeded = function (e) {
+            console.log("Creando la estructura de la tabla");
+
+            //obteniendo la conexión activa
+            active = dataBase.result;
+
+            //creando la colección:
+            //En este caso, la colección, tendrá un ID autogenerado.
+            var urls = active.createObjectStore("urls", {keyPath: 'id', autoIncrement: true});
+
+            //creando los indices. (Dado por el nombre, campo y opciones)
+            urls.createIndex('por_id', 'id', {unique: false});
+        };
+
+        //El evento que se dispara una vez, lo
+        dataBase.onsuccess = function (e) {
+            console.log('Proceso ejecutado de forma correctamente');
+        };
+
+        dataBase.onerror = function (e) {
+            console.error('Error en el proceso: ' + e.target.errorCode);
+        };
+
+
+        function addURL() {
+            var dbActiva = dataBase.result; //Nos retorna una referencia al IDBDatabase.
+
+            //Para realizar una operación de agregar, actualización o borrar.
+            // Es necesario abrir una transacción e indicar un modo: readonly, readwrite y versionchange
+            var transaccion = dbActiva.transaction(["urls"], "readwrite");
+
+            //Manejando los errores.
+            transaccion.onerror = function (e) {
+                alert(request.error.name + '\n\n' + request.error.message);
+            };
+
+            transaccion.oncomplete = function (e) {
+                alert('URL agregado correctamente');
+            };
+
+            //abriendo la colección de datos que estaremos usando.
+            var urls = transaccion.objectStore("urls");
+
+            //Para agregar se puede usar add o put, el add requiere que no exista
+            // el objeto.
+            var request = urls.put({
+                originalURL: document.querySelector("#originalURL").value
+            });
+
+            request.onerror = function (e) {
+                var mensaje = "Error: " + e.target.errorCode;
+                console.error(mensaje);
+                alert(mensaje)
+            };
+
+            request.onsuccess = function (e) {
+                console.log("Datos Procesado con exito");
+            };
+        }
+
+    </script>
 </#macro>
 
 <#macro page_body>
@@ -19,7 +90,7 @@
                                    placeholder="https://www.google.com.do/" required>
                         </div>
                         <div class="col md-1">
-                            <button class="btn btn-group-lg btn-custom1" type="submit" form="acortarurlform">
+                            <button onclick="addURL()" class="btn btn-group-lg btn-custom1" type="submit" form="acortarurlform">
                                 Acortar
                             </button>
                         </div>
@@ -33,7 +104,7 @@
                         <div class="col-md-8 offset-md-2">
                             <label for="copyurl" class="col-form-label text-light">Enlace:</label>
                             <input id="copyurl" type="text" class="form-control"
-                                   value="https://apptest.projects-domain.me/use/${urlshort}"
+                                   value="${cloudlink}${urlshort}"
                                    placeholder="https://www.my.url/" readonly>
                             <br>
                             <form method="get" action="/use/${urlshort}">
@@ -99,7 +170,7 @@
                                                 <form id="shorturluse" method="get" action="/use/${u.shortUrl}">
                                                     <td>
                                                         <button class="btn btn-success" type="submit">
-                                                            https://apptest.projects-domain.me/use/${u.shortUrl}
+                                                           ${cloudlink}${u.shortUrl}
                                                         </button>
                                                     </td>
                                                 </form>
