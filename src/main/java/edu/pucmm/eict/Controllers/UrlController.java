@@ -89,6 +89,7 @@ public class UrlController {
 
                     if (ctx.sessionAttribute("urlshort") != null) {
                         freeMarkerVars.put("urlshort", ctx.sessionAttribute("urlshort"));
+                        freeMarkerVars.put("ogurl", ctx.sessionAttribute("og-url"));
                     }
 
                     freeMarkerVars.put("urls", UrlServices.getInstancia().getUrlPaginated(page));
@@ -108,6 +109,7 @@ public class UrlController {
                     }
 
                     ctx.sessionAttribute("urlshort",/* "https://apptest.projects-domain.me/use/" +*/ generated.getShortUrl());
+                    ctx.sessionAttribute("og-url", url);
 
                     ctx.redirect("/");
                 });

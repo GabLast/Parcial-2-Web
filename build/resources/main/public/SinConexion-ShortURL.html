@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/404-NOT-FOUND-animated.css">
+    <script src="js/bootstrap.min.js"></script>
     <title>URLs Acortadas</title>
     <script>
         //dependiendo el navegador busco la referencia del objeto.
         var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB
 
         //indicamos el nombre y la versión
-        var dataBase = indexedDB.open("finalweb", 1);
+        var dataBase = indexedDB.open("urlshortener", 1);
 
 
         //se ejecuta la primera vez que se crea la estructura
@@ -24,12 +27,12 @@
             var urls = active.createObjectStore("urls", {keyPath: 'id', autoIncrement: true});
 
             //creando los indices. (Dado por el nombre, campo y opciones)
-            urls.createIndex('por_id', 'id', {unique: false});
+            urls.createIndex('por_id', 'id', {unique: true});
         };
 
         //El evento que se dispara una vez, lo
         dataBase.onsuccess = function (e) {
-            console.log('Proceso ejecutado de forma correctamente');
+            console.log('Proceso ejecutado de forma correcta');
         };
 
         dataBase.onerror = function (e) {
@@ -73,19 +76,19 @@
         function imprimirTabla(lista) {
             //creando la tabla...
             var tabla = document.createElement("table");
-            tabla.className = "table";
-            tabla.className = "table-striped";
-            tabla.className = "table-hover";
+            tabla.setAttribute('class', 'table table-bordered')
             var filaTabla = tabla.insertRow();
-            filaTabla.className = "table-dark";
+            filaTabla.setAttribute('class', 'table-dark text-center')
             filaTabla.insertCell().textContent = "ID";
             filaTabla.insertCell().textContent = "URL Original";
+            filaTabla.insertCell().textContent = "URL Acortada";
 
             for (var key in lista) {
-                filaTabla = tabla.insertRow();
-                filaTabla.className = "table-secondary"
-                filaTabla.insertCell().textContent = "" + lista[key].id;
-                filaTabla.insertCell().textContent = "" + lista[key].originalURL;
+                var filaTabla2 = tabla.insertRow();
+                filaTabla2.setAttribute('class', 'text-center table-secondary')
+                filaTabla2.insertCell().textContent = "" + lista[key].id;
+                filaTabla2.insertCell().textContent = "" + lista[key].originalURL;
+                filaTabla2.insertCell().textContent = "" + lista[key].shorturl;
             }
 
             document.getElementById("listar").innerHTML = "";
@@ -97,14 +100,10 @@
 <body>
 <style>
     html, body {
-        /*background-image: url("/img/background.jpg");*/
+        background-image: url("/img/background.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
-    }
-    .btn-eliminar {
-        background-color: darkred !important;
-        color: whitesmoke !important;
     }
 
     .btn-custom1 {
@@ -112,11 +111,28 @@
         color: whitesmoke !important;
     }
 </style>
-<h1>URLs que han sido acortadas</h1>
+<h2 class="text-center text-light">URLs que han sido acortadas</h2>
 <br/>
-<button onclick="listarDatos()">Listar Datos</button>
-<div id="listar"></div>
+
+<br/><br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md offset-5">
+                    <button onclick="listarDatos()" class="btn-custom1 btn btn-success">Listar URLs</button>
+                    <br><br>
+
+                </div>
+                <div id="listar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <br>
-<a href="/">Volver al Inicio</a>
+<div class="col-md-1 offset-md-5">
+    <a href="/" class="btn-go-home ">Volver al inicio</a>
+</div>
 </body>
 </html>
