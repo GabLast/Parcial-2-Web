@@ -8,6 +8,7 @@ import edu.pucmm.eict.Services.DetailsUrlServices;
 import edu.pucmm.eict.Services.UrlServices;
 import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
+import kong.unirest.JsonNode;
 import org.jasypt.util.text.StrongTextEncryptor;
 
 
@@ -15,6 +16,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.HashMap;
 import java.util.Map;
+
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
+import kong.unirest.json.JSONObject;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
@@ -112,6 +118,24 @@ public class UrlController {
                     ctx.sessionAttribute("og-url", url);
 
                     ctx.redirect("/");
+                });
+
+                post("/acortar/preview", ctx -> {
+                    String url = ctx.formParam("originalURL");
+                    String LinkPreviewApi = "http://api.linkpreview.net/?key=b52a19dee126b74e271903b0131548ca&&fields=image_x&q="+ url;
+                    HttpResponse<JsonNode> request = Unirest.get(LinkPreviewApi)
+                            .header("Content-Type", "application/json")
+                            .header("Accept", "application/json")
+                            .asJson();
+                    JSONObject preview = request.getBody().getObject();
+                    String imageLink = preview.getString("image");
+
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Link Preview");
+                    freeMarkerVars.put("Imagen", imageLink);
+                    freeMarkerVars.put("originalURL", url);
+
+                    ctx.render("/templates/LinkPreview.ftl", freeMarkerVars);
                 });
 
 

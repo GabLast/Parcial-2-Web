@@ -119,7 +119,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="container-fluid">
-            <form method="post" id="acortarurlform" action="/home/acortar">
+            <form method="post" id="acortarurlform" action="/home/acortar/preview">
                 <div class="row">
                     <div class="col-md-2">
                     </div>
