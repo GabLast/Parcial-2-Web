@@ -54,6 +54,9 @@ dependencies {
     //libreria para SOAP de Jetty https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http-spi
     implementation group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '9.4.30.v20200611'
 
+    //Libreria para convertir img url to base64
+    implementation 'commons-io:commons-io:2.8.0'
+
 }
 
 shadowJar {
