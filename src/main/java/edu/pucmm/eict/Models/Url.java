@@ -23,9 +23,6 @@ public class Url implements Serializable {
     private int borrado;
     @ManyToOne
     private Usuario user;
-    private String mimeType;
-    @Lob
-    private String previewBase64;
 
     @OneToMany(mappedBy = "url", fetch = FetchType.EAGER)
     private Set<DetallesURL> misdetalles;
@@ -45,22 +42,6 @@ public class Url implements Serializable {
         this.shortUrl = shortUrl;
         this.user = user;
         this.fechaRegistro = new Date();
-    }
-
-    public String getMimeType() {
-        return mimeType;
-    }
-
-    public void setMimeType(String mimeType) {
-        this.mimeType = mimeType;
-    }
-
-    public String getPreviewBase64() {
-        return previewBase64;
-    }
-
-    public void setPreviewBase64(String previewBase64) {
-        this.previewBase64 = previewBase64;
     }
 
     public long getIdURL() {

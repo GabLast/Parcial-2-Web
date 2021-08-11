@@ -8,9 +8,6 @@ import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 
 import javax.crypto.SecretKey;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -77,10 +74,12 @@ public class RestAPIController {
                     });
 
                     post("/", ctx -> {
-                        Usuario user = ctx.sessionAttribute("user");
+                        String username = ctx.queryParam("username");
+                        Usuario user = UserServices.getInstancia().getUserByUsername(username);
                         String url = ctx.formParam("originalURL");
                         Url nueva = UrlServices.getInstancia().generateShortURL(url, user);
-                        ctx.json(nueva);
+
+                        ctx.json(new ServiciosRetorno(nueva));
                     });
                 });
 
