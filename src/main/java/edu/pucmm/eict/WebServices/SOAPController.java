@@ -1,6 +1,7 @@
 package edu.pucmm.eict.WebServices;
 
 import com.sun.net.httpserver.HttpContext;
+import edu.pucmm.eict.SOAP.URLWebServices;
 import io.javalin.Javalin;
 import org.eclipse.jetty.http.spi.HttpSpiContextHandler;
 import org.eclipse.jetty.http.spi.JettyHttpContext;
@@ -20,7 +21,6 @@ public class SOAPController {
         this.app = app;
     }
 
-    @Override
     public void routes() {
         Server server = app.server().server();
         ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
@@ -31,10 +31,10 @@ public class SOAPController {
             HttpContext context = build(server, "/ws");
 
             //El o los servicios que estoy agrupando en ese contexto
-            EstudianteWebServices wsa = new EstudianteWebServices();
+            URLWebServices wsa = new URLWebServices();
             Endpoint endpoint = Endpoint.create(wsa);
             endpoint.publish(context);
-            // Para acceder al wsdl en http://localhost:7000/ws/EstudianteWebServices?wsdl
+            // Para acceder al wsdl en http://localhost:7000/ws/URLWebServices?wsdl
         }catch (Exception ex){
             ex.printStackTrace();
         }

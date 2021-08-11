@@ -52,7 +52,7 @@ public class Main {
 
         });
 
-//        new SOAPController(app).routes();
+        new SOAPController(app).routes();
 
         app.start(getHerokuAssignedPort());
 
