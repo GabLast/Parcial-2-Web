@@ -31,6 +31,10 @@ dependencies {
     implementation 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
     //URL Validator
     implementation 'commons-validator:commons-validator:1.7'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+
+    //REST
+    compile 'com.konghq:unirest-java:3.7.04'
 
     // User agent parser
     // https://mvnrepository.com/artifact/com.blueconic/browscap-java

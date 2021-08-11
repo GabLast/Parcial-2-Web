@@ -6,24 +6,24 @@ edu/pucmm/eict/Models/DetallesURL.java
  edu.pucmm.eict.Models.DetallesURL
 edu/pucmm/eict/Database/DBConfig.java
  edu.pucmm.eict.Database.DBConfig
-edu/pucmm/eict/Services/DetailsUrlServices.java
- edu.pucmm.eict.Services.DetailsUrlServices
+edu/pucmm/eict/Services/UserServices.java
+ edu.pucmm.eict.Services.UserServices
 edu/pucmm/eict/Helpers/UserAgent.java
  edu.pucmm.eict.Helpers.UserAgent
 edu/pucmm/eict/Database/DBConnection.java
  edu.pucmm.eict.Database.DBConnection
 edu/pucmm/eict/Controllers/DetallesController.java
  edu.pucmm.eict.Controllers.DetallesController
-edu/pucmm/eict/Controllers/GeneralController.java
- edu.pucmm.eict.Controllers.GeneralController
-edu/pucmm/eict/Services/UrlServices.java
- edu.pucmm.eict.Services.UrlServices
 edu/pucmm/eict/Database/DBEntityManager.java
  edu.pucmm.eict.Database.DBEntityManager
 edu/pucmm/eict/Controllers/UserController.java
  edu.pucmm.eict.Controllers.UserController
-edu/pucmm/eict/Services/UserServices.java
- edu.pucmm.eict.Services.UserServices
+edu/pucmm/eict/Services/UrlServices.java
+ edu.pucmm.eict.Services.UrlServices
+edu/pucmm/eict/Services/DetailsUrlServices.java
+ edu.pucmm.eict.Services.DetailsUrlServices
+edu/pucmm/eict/Controllers/GeneralController.java
+ edu.pucmm.eict.Controllers.GeneralController
 edu/pucmm/eict/Main.java
  edu.pucmm.eict.Main
 edu/pucmm/eict/Controllers/UrlController.java
