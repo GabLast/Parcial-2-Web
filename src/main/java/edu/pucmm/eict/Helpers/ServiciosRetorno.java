@@ -29,6 +29,9 @@ public class ServiciosRetorno {
     private long visitasandroid;
     private String previewIMG;
 
+    public ServiciosRetorno() {
+    }
+
     public ServiciosRetorno(Url url) {
         this.urloriginal = url.getUrl();
         this.urlcorta = url.getShortUrl();
