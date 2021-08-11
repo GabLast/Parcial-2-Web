@@ -104,7 +104,7 @@ public class UserController {
                     {
 
                         ctx.removeCookie("rememberme");
-                        GeneralController.getInstancia().setUser(null);
+//                        GeneralController.getInstancia().setUser(null);
                     }
                     ctx.req.getSession().invalidate();
                     ctx.redirect("/");

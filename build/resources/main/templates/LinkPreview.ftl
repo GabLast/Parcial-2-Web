@@ -15,7 +15,7 @@
             <div class="col-md-8 offset-md-2">
                 <div class="modal-content bg-dark text-light">
                     <div class="modal-header">
-                        <h5 class="modal-title">Preview del Link</h5>
+                        <h5 class="modal-title">Preview</h5>
                     </div>
                     <div class="modal-body">
                         <form method="post" id="acortarurlform" action="/home/acortar">
@@ -28,7 +28,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" form="acortarurlform" class="btn btn-primary btn-dark">Acortar</button>
+                        <button type="submit" form="acortarurlform" class="btn btn-group-lg btn-custom1">Acortar</button>
                     </div>
                 </div>
             </div>

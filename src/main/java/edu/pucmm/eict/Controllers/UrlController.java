@@ -37,14 +37,15 @@ public class UrlController {
         app.routes(() -> {
 
             before(ctx -> {
-                GeneralController.getInstancia().setUser(ctx.sessionAttribute("usuario"));
+//                GeneralController.getInstancia().setUser(ctx.sessionAttribute("usuario"));
 
-                if (ctx.cookie("rememberme") != null && GeneralController.getInstancia().getUser() == null) {
+                if (ctx.cookie("rememberme") != null /*&& GeneralController.getInstancia().getUser() == null*/) {
                     StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
                     textEncryptor.setPassword("TH!SisTH3P@SSw0rD"); //this should be put in an enviroment variable?
                     String myDecryptedText = textEncryptor.decrypt(ctx.cookie("rememberme"));
-                    GeneralController.getInstancia().setUser(UserServices.getInstancia().getUserByUsername(myDecryptedText));
-                    ctx.sessionAttribute("usuario", GeneralController.getInstancia().getUser());
+//                    GeneralController.getInstancia().setUser(UserServices.getInstancia().getUserByUsername(myDecryptedText));
+//                    ctx.sessionAttribute("usuario", GeneralController.getInstancia().getUser());
+                    ctx.sessionAttribute("usuario", UserServices.getInstancia().getUserByUsername(myDecryptedText));
                 }
 
             });
@@ -82,7 +83,7 @@ public class UrlController {
                     freeMarkerVars.put("title", "Home");
                     int page = ctx.pathParam("page", Integer.class).get();
 
-                    freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+                    freeMarkerVars.put("usuario", ctx.sessionAttribute("usuario"));
 
                     int pageSize = 10;
                     EntityManager em = UrlServices.getInstancia().getEntityManager();
@@ -108,8 +109,8 @@ public class UrlController {
                     String url = ctx.formParam("originalURL");
                     Url generated;
 
-                    if (GeneralController.getInstancia().getUser() != null) {
-                        generated = UrlServices.getInstancia().generateShortURL(url, GeneralController.getInstancia().getUser());
+                    if (ctx.sessionAttribute("usuario") != null) {
+                        generated = UrlServices.getInstancia().generateShortURL(url, ctx.sessionAttribute("usuario"));
                     } else {
                         generated = UrlServices.getInstancia().generateShortURL(url, null);
                     }
@@ -134,6 +135,7 @@ public class UrlController {
                     freeMarkerVars.put("title", "Link Preview");
                     freeMarkerVars.put("Imagen", imageLink);
                     freeMarkerVars.put("originalURL", url);
+                    freeMarkerVars.put("usuario", ctx.sessionAttribute("usuario"));
 
                     ctx.render("/templates/LinkPreview.ftl", freeMarkerVars);
                 });
@@ -151,7 +153,7 @@ public class UrlController {
                         attributes.put("id", id);
                         attributes.put("URL", url);
                         attributes.put("UrlShort", shortURL);
-                        attributes.put("usuario", GeneralController.getInstancia().getUser());
+                        attributes.put("usuario", ctx.sessionAttribute("usuario"));
                         if (GeneralController.getInstancia().getCloudlink().isEmpty()) {
                             attributes.put("cloudlink", "no-cloud-domain-assigned/");
                         } else {
@@ -185,11 +187,11 @@ public class UrlController {
             path("/administracion", () -> {
 
                 before(ctx -> {
-
-                    if (GeneralController.getInstancia().getUser() == null) {
+                    Usuario user = ctx.sessionAttribute("usuario");
+                    if (ctx.sessionAttribute("usuario") == null) {
                         GeneralController.getInstancia().setRequestedURL(ctx.req.getRequestURI());
                         ctx.redirect("/Login.html");
-                    } else if (GeneralController.getInstancia().getUser().getAdmin() == 0) {
+                    } else if (user.getAdmin() == 0) {
                         ctx.redirect("/error/not-authorized");
                     }
                 });
@@ -212,7 +214,7 @@ public class UrlController {
                     int totalPags = (int) (Math.ceil(((float) countResults / (float) pageSize)));
                     freeMarkerVars.put("paginas", totalPags);
 
-                    freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+                    freeMarkerVars.put("usuario", ctx.sessionAttribute("usuario"));
 
                     ctx.render("/templates/ListarUsuarios.ftl", freeMarkerVars);
 
@@ -255,7 +257,7 @@ public class UrlController {
                 get("/not-authorized", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Error 401");
-                    freeMarkerVars.put("usuario", GeneralController.getInstancia().getUser());
+                    freeMarkerVars.put("usuario", ctx.sessionAttribute("usuario"));
                     ctx.render("/templates/No-autorizado.ftl", freeMarkerVars);
                 });
             });

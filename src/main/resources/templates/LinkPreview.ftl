@@ -28,7 +28,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" form="acortarurlform" class="btn btn-primary btn-dark">Acortar</button>
+                        <button type="submit" form="acortarurlform" class="btn btn-group-lg btn-custom1">Acortar</button>
                     </div>
                 </div>
             </div>

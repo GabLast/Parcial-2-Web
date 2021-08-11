@@ -13,9 +13,8 @@ public class GeneralController {
         return instancia;
     }
 
-    private Usuario user = null;
+//    private Usuario user = null;
     private String requestedURL = "";
-    private Url lastURLShortened = null;
     private String cloudlink = "";
 
     public String getCloudlink() {
@@ -26,21 +25,13 @@ public class GeneralController {
         this.cloudlink = cloudlink;
     }
 
-    public Url getLastURLShortened() {
-        return lastURLShortened;
-    }
-
-    public void setLastURLShortened(Url lastURLShortened) {
-        this.lastURLShortened = lastURLShortened;
-    }
-
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
+//    public Usuario getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Usuario user) {
+//        this.user = user;
+//    }
 
     public String getRequestedURL() {
         return requestedURL;
