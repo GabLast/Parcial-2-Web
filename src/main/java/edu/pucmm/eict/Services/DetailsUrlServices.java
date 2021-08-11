@@ -36,8 +36,15 @@ public class DetailsUrlServices extends DBEntityManager<DetallesURL> {
         return (long) query.getSingleResult();
     }
 
+    public long visitasOSLike(String urlShort, String os){
+        Query query = getEntityManager().createQuery("Select count(d.sistemaOperativo) from DetallesURL d where d.url.shortUrl =:urlShort and d.sistemaOperativo like :os");
+        query.setParameter("urlShort", urlShort);
+        query.setParameter("os", "%" + os + "%");
+        return (long) query.getSingleResult();
+    }
+
     public long getSizeVisitaByDate(String urlShort){
-        Query query = getEntityManager().createQuery("Select count(d.fechaAcceso) from DetallesURL d where d.url.shortUrl =:urlShort ");
+        Query query = getEntityManager().createQuery("Select count(d.fechaAcceso) from DetallesURL d where d.url.shortUrl =:urlShort");
         query.setParameter("urlShort", urlShort);
         return (long) query.getSingleResult();
     }
