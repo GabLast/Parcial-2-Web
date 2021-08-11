@@ -39,12 +39,9 @@
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['Sistema Operativo', 'Visitas'],
-                    ['Windows 10', ${windows10}],
-                    ['Windows 7', ${windows7}],
-                    ['Ubuntu 16.04', ${ubuntu1604}],
-                    ['Ubuntu 18.04', ${ubuntu1804}],
-                    ['Android 8', ${android8}],
-                    ['Android 9', ${android9}]
+                    ['Windows', ${windows}],
+                    ['Ubuntu', ${ubuntu}],
+                    ['Android', ${android}]
                 ]);
                 var options = {
                     title: 'Visitas por Sistemas Operativos',

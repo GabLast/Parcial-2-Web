@@ -6,6 +6,13 @@ import edu.pucmm.eict.Controllers.UrlController;
 import edu.pucmm.eict.Controllers.UserController;
 import edu.pucmm.eict.Database.DBConfig;
 import edu.pucmm.eict.Database.DBConnection;
+import edu.pucmm.eict.Services.DetailsUrlServices;
+import edu.pucmm.eict.Services.UrlServices;
+import edu.pucmm.eict.WebServices.RestAPIController;
+import io.javalin.plugin.openapi.OpenApiOptions;
+import io.javalin.plugin.openapi.OpenApiPlugin;
+import io.javalin.plugin.openapi.ui.SwaggerOptions;
+import io.swagger.v3.oas.models.info.Info;
 import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
@@ -41,11 +48,13 @@ public class Main {
             config.addStaticFiles("/public");
             config.registerPlugin(new RouteOverviewPlugin("rutas"));
             config.enableCorsForAllOrigins();
+            config.registerPlugin(new OpenApiPlugin(getOpenApiOptions()));
 
         }).start(getHerokuAssignedPort());
 
         new UrlController(app).routes();
         new UserController(app).routes();
+        new RestAPIController(app).routes();
 
         app.get("/", ctx -> {
             ctx.redirect("/home");
@@ -54,7 +63,30 @@ public class Main {
         app.error(404, ctx -> {
             ctx.redirect("/404.html");
         });
+
+        //Enviando la información a solicitud del CORS
+        app.options("/*", ctx -> {
+            System.out.println("Entrando al metodo de options");
+            String accessControlRequestHeaders = ctx.req.getHeader("Access-Control-Request-Headers");
+            if (accessControlRequestHeaders != null) {
+                ctx.res.setHeader("Access-Control-Allow-Headers",accessControlRequestHeaders);
+            }
+
+            String accessControlRequestMethod = ctx.req.getHeader("Access-Control-Request-Method");
+            if (accessControlRequestMethod != null) {
+                ctx.res.setHeader("Access-Control-Allow-Methods",accessControlRequestMethod);
+            }
+        });
+
+        //Filtro para validar el CORS
+        app.before(ctx -> {
+//            System.out.println("Aplicando header del API del CORS");
+            ctx.res.setHeader("Access-Control-Allow-Origin",  "*");
+            //response.type("application/json");
+        });
+
     }
+
 
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
@@ -66,6 +98,13 @@ public class Main {
 
     public static String getModoConexion(){
         return modoConexion;
+    }
+
+    private static OpenApiOptions getOpenApiOptions() {
+        Info applicationInfo = new Info()
+                .version("1.0")
+                .description("My Application");
+        return new OpenApiOptions(applicationInfo).path("/openapi").swagger(new SwaggerOptions("/openapi-ui"));
     }
 
 }
