@@ -8,6 +8,7 @@ import edu.pucmm.eict.Database.DBConfig;
 import edu.pucmm.eict.Database.DBConnection;
 import edu.pucmm.eict.Helpers.ServiciosRetorno;
 import edu.pucmm.eict.WebServices.RestAPIController;
+import edu.pucmm.eict.WebServices.SOAPController;
 import io.javalin.plugin.openapi.OpenApiOptions;
 import io.javalin.plugin.openapi.OpenApiPlugin;
 import io.javalin.plugin.openapi.ui.SwaggerOptions;
@@ -49,7 +50,11 @@ public class Main {
             config.enableCorsForAllOrigins();
             config.registerPlugin(new OpenApiPlugin(getOpenApiOptions()));
 
-        }).start(getHerokuAssignedPort());
+        });
+
+//        new SOAPController(app).routes();
+
+        app.start(getHerokuAssignedPort());
 
         new UrlController(app).routes();
         new UserController(app).routes();
