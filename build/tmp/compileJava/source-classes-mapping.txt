@@ -20,6 +20,8 @@ edu/pucmm/eict/Helpers/UserAgent.java
  edu.pucmm.eict.Helpers.UserAgent
 edu/pucmm/eict/Database/DBConnection.java
  edu.pucmm.eict.Database.DBConnection
+edu/pucmm/eict/Helpers/RestRequest.java
+ edu.pucmm.eict.Helpers.RestRequest
 edu/pucmm/eict/Controllers/DetallesController.java
  edu.pucmm.eict.Controllers.DetallesController
 edu/pucmm/eict/Database/DBEntityManager.java

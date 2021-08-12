@@ -1,5 +1,6 @@
 package edu.pucmm.eict.WebServices;
 
+import edu.pucmm.eict.Helpers.RestRequest;
 import edu.pucmm.eict.Helpers.ServiciosRetorno;
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
@@ -74,10 +75,10 @@ public class RestAPIController {
                     });
 
                     post("/", ctx -> {
-                        String username = ctx.queryParam("username");
-                        Usuario user = UserServices.getInstancia().getUserByUsername(username);
-                        String url = ctx.formParam("originalURL");
-                        Url nueva = UrlServices.getInstancia().generateShortURL(url, user);
+                        RestRequest url = ctx.bodyAsClass(RestRequest.class);
+                        Usuario user = UserServices.getInstancia().getUserByUsername(url.getUser());
+//                        System.out.println(url);
+                        Url nueva = UrlServices.getInstancia().generateShortURL(url.getUrl(), user);
 
                         ctx.json(new ServiciosRetorno(nueva));
                     });
