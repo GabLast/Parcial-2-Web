@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package urlrn;
+
+message UrlRequest{
+  string usuario =1;
+}
+
+message UrlResponse{
+  string url = 1;
+  string shortUrl = 2;
+}
+
+message UrlBorrado{
+  bool ok = 1;
+}
+
+message ListaUrl{
+  repeated UrlResponse url =1;
+}
+
+message Empty{
+
+}
+
+service UrlRn{
+  rpc getUrl(UrlRequest) returns (UrlResponse);
+}
