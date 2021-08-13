@@ -17,16 +17,16 @@ import java.util.List;
 public class URLWebServices {
 
     @WebMethod
-    public List<ServiciosRetorno> getListaURLS(Usuario user) {
+    public List<ServiciosRetorno> getListaURLS(String username, String password) {
         List<ServiciosRetorno> urls = new ArrayList<>();
-        for (Url url :  UrlServices.getInstancia().getUrlByUser(user)) {
+        for (Url url :  UrlServices.getInstancia().getUrlByUser(UserServices.getInstancia().login(username,password))) {
             urls.add(new ServiciosRetorno(url));
         }
         return urls;
     }
 
     @WebMethod
-    public ServiciosRetorno registrarURL(String url, String username, String password) throws MalformedURLException, UnknownHostException {
+        public ServiciosRetorno registrarURL(String url, String username, String password) throws MalformedURLException, UnknownHostException {
 
         Url nueva = UrlServices.getInstancia().generateShortURL(url, UserServices.getInstancia().login(username,password));
 
