@@ -609,6 +609,18 @@ public final class UrlRnOuterClass {
      */
     com.google.protobuf.ByteString
         getShortUrlBytes();
+
+    /**
+     * <code>string date = 3;</code>
+     * @return The date.
+     */
+    java.lang.String getDate();
+    /**
+     * <code>string date = 3;</code>
+     * @return The bytes for date.
+     */
+    com.google.protobuf.ByteString
+        getDateBytes();
   }
   /**
    * Protobuf type {@code urlrn.UrlResponse}
@@ -625,6 +637,7 @@ public final class UrlRnOuterClass {
     private UrlResponse() {
       url_ = "";
       shortUrl_ = "";
+      date_ = "";
     }
 
     @java.lang.Override
@@ -667,6 +680,12 @@ public final class UrlRnOuterClass {
               java.lang.String s = input.readStringRequireUtf8();
 
               shortUrl_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              date_ = s;
               break;
             }
             default: {
@@ -777,6 +796,44 @@ public final class UrlRnOuterClass {
       }
     }
 
+    public static final int DATE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object date_;
+    /**
+     * <code>string date = 3;</code>
+     * @return The date.
+     */
+    @java.lang.Override
+    public java.lang.String getDate() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        date_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string date = 3;</code>
+     * @return The bytes for date.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDateBytes() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        date_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -797,6 +854,9 @@ public final class UrlRnOuterClass {
       if (!getShortUrlBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, shortUrl_);
       }
+      if (!getDateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, date_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -811,6 +871,9 @@ public final class UrlRnOuterClass {
       }
       if (!getShortUrlBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, shortUrl_);
+      }
+      if (!getDateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, date_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -831,6 +894,8 @@ public final class UrlRnOuterClass {
           .equals(other.getUrl())) return false;
       if (!getShortUrl()
           .equals(other.getShortUrl())) return false;
+      if (!getDate()
+          .equals(other.getDate())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -846,6 +911,8 @@ public final class UrlRnOuterClass {
       hash = (53 * hash) + getUrl().hashCode();
       hash = (37 * hash) + SHORTURL_FIELD_NUMBER;
       hash = (53 * hash) + getShortUrl().hashCode();
+      hash = (37 * hash) + DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getDate().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -983,6 +1050,8 @@ public final class UrlRnOuterClass {
 
         shortUrl_ = "";
 
+        date_ = "";
+
         return this;
       }
 
@@ -1011,6 +1080,7 @@ public final class UrlRnOuterClass {
         urlrn.UrlRnOuterClass.UrlResponse result = new urlrn.UrlRnOuterClass.UrlResponse(this);
         result.url_ = url_;
         result.shortUrl_ = shortUrl_;
+        result.date_ = date_;
         onBuilt();
         return result;
       }
@@ -1065,6 +1135,10 @@ public final class UrlRnOuterClass {
         }
         if (!other.getShortUrl().isEmpty()) {
           shortUrl_ = other.shortUrl_;
+          onChanged();
+        }
+        if (!other.getDate().isEmpty()) {
+          date_ = other.date_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1244,6 +1318,82 @@ public final class UrlRnOuterClass {
   checkByteStringIsUtf8(value);
         
         shortUrl_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object date_ = "";
+      /**
+       * <code>string date = 3;</code>
+       * @return The date.
+       */
+      public java.lang.String getDate() {
+        java.lang.Object ref = date_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          date_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string date = 3;</code>
+       * @return The bytes for date.
+       */
+      public com.google.protobuf.ByteString
+          getDateBytes() {
+        java.lang.Object ref = date_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          date_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string date = 3;</code>
+       * @param value The date to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string date = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDate() {
+        
+        date_ = getDefaultInstance().getDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string date = 3;</code>
+       * @param value The bytes for date to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        date_ = value;
         onChanged();
         return this;
       }
@@ -3035,12 +3185,13 @@ public final class UrlRnOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\013UrlRn.proto\022\005urlrn\"\035\n\nUrlRequest\022\017\n\007us" +
-      "uario\030\001 \001(\t\",\n\013UrlResponse\022\013\n\003url\030\001 \001(\t\022" +
-      "\020\n\010shortUrl\030\002 \001(\t\"\030\n\nUrlBorrado\022\n\n\002ok\030\001 " +
-      "\001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001 \003(\0132\022.urlrn.Url" +
-      "Response\"\007\n\005Empty28\n\005UrlRn\022/\n\006getUrl\022\021.u" +
-      "rlrn.UrlRequest\032\022.urlrn.UrlResponseb\006pro" +
-      "to3"
+      "uario\030\001 \001(\t\":\n\013UrlResponse\022\013\n\003url\030\001 \001(\t\022" +
+      "\020\n\010shortUrl\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\"\030\n\nUrlBo" +
+      "rrado\022\n\n\002ok\030\001 \001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001 \003" +
+      "(\0132\022.urlrn.UrlResponse\"\007\n\005Empty2h\n\005UrlRn" +
+      "\022/\n\006getUrl\022\021.urlrn.UrlRequest\032\022.urlrn.Ur" +
+      "lResponse\022.\n\010listaUrl\022\021.urlrn.UrlRequest" +
+      "\032\017.urlrn.ListaUrlb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3057,7 +3208,7 @@ public final class UrlRnOuterClass {
     internal_static_urlrn_UrlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_UrlResponse_descriptor,
-        new java.lang.String[] { "Url", "ShortUrl", });
+        new java.lang.String[] { "Url", "ShortUrl", "Date", });
     internal_static_urlrn_UrlBorrado_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_urlrn_UrlBorrado_fieldAccessorTable = new

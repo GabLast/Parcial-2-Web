@@ -3,12 +3,14 @@ syntax = "proto3";
 package urlrn;
 
 message UrlRequest{
-  string usuario =1;
+  string usuario = 1;
 }
 
 message UrlResponse{
   string url = 1;
   string shortUrl = 2;
+  string date = 3;
+
 }
 
 message UrlBorrado{
@@ -25,4 +27,5 @@ message Empty{
 
 service UrlRn{
   rpc getUrl(UrlRequest) returns (UrlResponse);
+  rpc listaUrl(UrlRequest) returns (ListaUrl);
 }
