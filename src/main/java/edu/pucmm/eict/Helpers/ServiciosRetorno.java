@@ -1,5 +1,6 @@
 package edu.pucmm.eict.Helpers;
 
+import edu.pucmm.eict.Controllers.GeneralController;
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Services.DetailsUrlServices;
 import java.net.URL;
@@ -29,9 +30,12 @@ public class ServiciosRetorno {
     private long visitasandroid;
     private String previewIMG;
 
+    public ServiciosRetorno() {
+    }
+
     public ServiciosRetorno(Url url) {
         this.urloriginal = url.getUrl();
-        this.urlcorta = url.getShortUrl();
+        this.urlcorta = GeneralController.getInstancia().getCloudlink() + "use/" + url.getShortUrl();
         this.fechaRegistro = url.getFechaRegistro();
         this.fechaString = fechaRegistro.toString();
         this.visitasSafari = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Safari");
@@ -170,4 +174,22 @@ public class ServiciosRetorno {
         this.visitasandroid = visitasandroid;
     }
 
+    @Override
+    public String toString() {
+        return "ServiciosRetorno{" +
+                "urloriginal='" + urloriginal + '\'' +
+                ", urlcorta='" + urlcorta + '\'' +
+                ", fechaRegistro=" + fechaRegistro +
+                ", fechaString='" + fechaString + '\'' +
+                ", visitasSafari=" + visitasSafari +
+                ", visitasOpera=" + visitasOpera +
+                ", visitasChrome=" + visitasChrome +
+                ", visitasEdge=" + visitasEdge +
+                ", visitasFirefox=" + visitasFirefox +
+                ", visitaswindows=" + visitaswindows +
+                ", visitasubuntu=" + visitasubuntu +
+                ", visitasandroid=" + visitasandroid +
+                ", previewIMG='" + previewIMG + '\'' +
+                '}';
+    }
 }

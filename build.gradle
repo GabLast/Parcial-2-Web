@@ -69,6 +69,10 @@ dependencies {
 
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
 
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.4.0-b180830.0438"
+    implementation "com.sun.xml.ws:jaxws-rt:2.3.1"
+    implementation "com.sun.xml.ws:rt:2.3.1"
+
 }
 
 sourceSets {
@@ -111,6 +115,9 @@ idea {
         // If you have additional sources, add them here:
         sourceDirs += file("src/generated");
     }
+    //Librerias para SOAP
+   
+
 }
 
 shadowJar {
