@@ -174,4 +174,22 @@ public class ServiciosRetorno {
         this.visitasandroid = visitasandroid;
     }
 
+    @Override
+    public String toString() {
+        return "ServiciosRetorno{" +
+                "urloriginal='" + urloriginal + '\'' +
+                ", urlcorta='" + urlcorta + '\'' +
+                ", fechaRegistro=" + fechaRegistro +
+                ", fechaString='" + fechaString + '\'' +
+                ", visitasSafari=" + visitasSafari +
+                ", visitasOpera=" + visitasOpera +
+                ", visitasChrome=" + visitasChrome +
+                ", visitasEdge=" + visitasEdge +
+                ", visitasFirefox=" + visitasFirefox +
+                ", visitaswindows=" + visitaswindows +
+                ", visitasubuntu=" + visitasubuntu +
+                ", visitasandroid=" + visitasandroid +
+                ", previewIMG='" + previewIMG + '\'' +
+                '}';
+    }
 }
