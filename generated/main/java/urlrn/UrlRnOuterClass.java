@@ -582,6 +582,724 @@ public final class UrlRnOuterClass {
 
   }
 
+  public interface newUrlRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:urlrn.newUrlRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string url = 1;</code>
+     * @return The url.
+     */
+    java.lang.String getUrl();
+    /**
+     * <code>string url = 1;</code>
+     * @return The bytes for url.
+     */
+    com.google.protobuf.ByteString
+        getUrlBytes();
+
+    /**
+     * <code>string usuario = 2;</code>
+     * @return The usuario.
+     */
+    java.lang.String getUsuario();
+    /**
+     * <code>string usuario = 2;</code>
+     * @return The bytes for usuario.
+     */
+    com.google.protobuf.ByteString
+        getUsuarioBytes();
+  }
+  /**
+   * Protobuf type {@code urlrn.newUrlRequest}
+   */
+  public static final class newUrlRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:urlrn.newUrlRequest)
+      newUrlRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use newUrlRequest.newBuilder() to construct.
+    private newUrlRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private newUrlRequest() {
+      url_ = "";
+      usuario_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new newUrlRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private newUrlRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              url_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              usuario_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return urlrn.UrlRnOuterClass.internal_static_urlrn_newUrlRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return urlrn.UrlRnOuterClass.internal_static_urlrn_newUrlRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              urlrn.UrlRnOuterClass.newUrlRequest.class, urlrn.UrlRnOuterClass.newUrlRequest.Builder.class);
+    }
+
+    public static final int URL_FIELD_NUMBER = 1;
+    private volatile java.lang.Object url_;
+    /**
+     * <code>string url = 1;</code>
+     * @return The url.
+     */
+    @java.lang.Override
+    public java.lang.String getUrl() {
+      java.lang.Object ref = url_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        url_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string url = 1;</code>
+     * @return The bytes for url.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUrlBytes() {
+      java.lang.Object ref = url_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        url_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USUARIO_FIELD_NUMBER = 2;
+    private volatile java.lang.Object usuario_;
+    /**
+     * <code>string usuario = 2;</code>
+     * @return The usuario.
+     */
+    @java.lang.Override
+    public java.lang.String getUsuario() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usuario = 2;</code>
+     * @return The bytes for usuario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsuarioBytes() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUrlBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, url_);
+      }
+      if (!getUsuarioBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, usuario_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUrlBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, url_);
+      }
+      if (!getUsuarioBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, usuario_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof urlrn.UrlRnOuterClass.newUrlRequest)) {
+        return super.equals(obj);
+      }
+      urlrn.UrlRnOuterClass.newUrlRequest other = (urlrn.UrlRnOuterClass.newUrlRequest) obj;
+
+      if (!getUrl()
+          .equals(other.getUrl())) return false;
+      if (!getUsuario()
+          .equals(other.getUsuario())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + URL_FIELD_NUMBER;
+      hash = (53 * hash) + getUrl().hashCode();
+      hash = (37 * hash) + USUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getUsuario().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static urlrn.UrlRnOuterClass.newUrlRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(urlrn.UrlRnOuterClass.newUrlRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code urlrn.newUrlRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:urlrn.newUrlRequest)
+        urlrn.UrlRnOuterClass.newUrlRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return urlrn.UrlRnOuterClass.internal_static_urlrn_newUrlRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return urlrn.UrlRnOuterClass.internal_static_urlrn_newUrlRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                urlrn.UrlRnOuterClass.newUrlRequest.class, urlrn.UrlRnOuterClass.newUrlRequest.Builder.class);
+      }
+
+      // Construct using urlrn.UrlRnOuterClass.newUrlRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        url_ = "";
+
+        usuario_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return urlrn.UrlRnOuterClass.internal_static_urlrn_newUrlRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public urlrn.UrlRnOuterClass.newUrlRequest getDefaultInstanceForType() {
+        return urlrn.UrlRnOuterClass.newUrlRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public urlrn.UrlRnOuterClass.newUrlRequest build() {
+        urlrn.UrlRnOuterClass.newUrlRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public urlrn.UrlRnOuterClass.newUrlRequest buildPartial() {
+        urlrn.UrlRnOuterClass.newUrlRequest result = new urlrn.UrlRnOuterClass.newUrlRequest(this);
+        result.url_ = url_;
+        result.usuario_ = usuario_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof urlrn.UrlRnOuterClass.newUrlRequest) {
+          return mergeFrom((urlrn.UrlRnOuterClass.newUrlRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(urlrn.UrlRnOuterClass.newUrlRequest other) {
+        if (other == urlrn.UrlRnOuterClass.newUrlRequest.getDefaultInstance()) return this;
+        if (!other.getUrl().isEmpty()) {
+          url_ = other.url_;
+          onChanged();
+        }
+        if (!other.getUsuario().isEmpty()) {
+          usuario_ = other.usuario_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        urlrn.UrlRnOuterClass.newUrlRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (urlrn.UrlRnOuterClass.newUrlRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object url_ = "";
+      /**
+       * <code>string url = 1;</code>
+       * @return The url.
+       */
+      public java.lang.String getUrl() {
+        java.lang.Object ref = url_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          url_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string url = 1;</code>
+       * @return The bytes for url.
+       */
+      public com.google.protobuf.ByteString
+          getUrlBytes() {
+        java.lang.Object ref = url_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          url_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string url = 1;</code>
+       * @param value The url to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUrl(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        url_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string url = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUrl() {
+        
+        url_ = getDefaultInstance().getUrl();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string url = 1;</code>
+       * @param value The bytes for url to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUrlBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        url_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object usuario_ = "";
+      /**
+       * <code>string usuario = 2;</code>
+       * @return The usuario.
+       */
+      public java.lang.String getUsuario() {
+        java.lang.Object ref = usuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 2;</code>
+       * @return The bytes for usuario.
+       */
+      public com.google.protobuf.ByteString
+          getUsuarioBytes() {
+        java.lang.Object ref = usuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 2;</code>
+       * @param value The usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuario(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        usuario_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsuario() {
+        
+        usuario_ = getDefaultInstance().getUsuario();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 2;</code>
+       * @param value The bytes for usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        usuario_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:urlrn.newUrlRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:urlrn.newUrlRequest)
+    private static final urlrn.UrlRnOuterClass.newUrlRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new urlrn.UrlRnOuterClass.newUrlRequest();
+    }
+
+    public static urlrn.UrlRnOuterClass.newUrlRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<newUrlRequest>
+        PARSER = new com.google.protobuf.AbstractParser<newUrlRequest>() {
+      @java.lang.Override
+      public newUrlRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new newUrlRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<newUrlRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<newUrlRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public urlrn.UrlRnOuterClass.newUrlRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface UrlResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:urlrn.UrlResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -621,6 +1339,42 @@ public final class UrlRnOuterClass {
      */
     com.google.protobuf.ByteString
         getDateBytes();
+
+    /**
+     * <code>string img64 = 4;</code>
+     * @return The img64.
+     */
+    java.lang.String getImg64();
+    /**
+     * <code>string img64 = 4;</code>
+     * @return The bytes for img64.
+     */
+    com.google.protobuf.ByteString
+        getImg64Bytes();
+
+    /**
+     * <code>int64 visitaFirefox = 5;</code>
+     * @return The visitaFirefox.
+     */
+    long getVisitaFirefox();
+
+    /**
+     * <code>int64 visitaWindows = 6;</code>
+     * @return The visitaWindows.
+     */
+    long getVisitaWindows();
+
+    /**
+     * <code>int64 visitaUbuntu = 7;</code>
+     * @return The visitaUbuntu.
+     */
+    long getVisitaUbuntu();
+
+    /**
+     * <code>int64 visitasChrome = 8;</code>
+     * @return The visitasChrome.
+     */
+    long getVisitasChrome();
   }
   /**
    * Protobuf type {@code urlrn.UrlResponse}
@@ -638,6 +1392,7 @@ public final class UrlRnOuterClass {
       url_ = "";
       shortUrl_ = "";
       date_ = "";
+      img64_ = "";
     }
 
     @java.lang.Override
@@ -686,6 +1441,32 @@ public final class UrlRnOuterClass {
               java.lang.String s = input.readStringRequireUtf8();
 
               date_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              img64_ = s;
+              break;
+            }
+            case 40: {
+
+              visitaFirefox_ = input.readInt64();
+              break;
+            }
+            case 48: {
+
+              visitaWindows_ = input.readInt64();
+              break;
+            }
+            case 56: {
+
+              visitaUbuntu_ = input.readInt64();
+              break;
+            }
+            case 64: {
+
+              visitasChrome_ = input.readInt64();
               break;
             }
             default: {
@@ -834,6 +1615,88 @@ public final class UrlRnOuterClass {
       }
     }
 
+    public static final int IMG64_FIELD_NUMBER = 4;
+    private volatile java.lang.Object img64_;
+    /**
+     * <code>string img64 = 4;</code>
+     * @return The img64.
+     */
+    @java.lang.Override
+    public java.lang.String getImg64() {
+      java.lang.Object ref = img64_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        img64_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string img64 = 4;</code>
+     * @return The bytes for img64.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImg64Bytes() {
+      java.lang.Object ref = img64_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        img64_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VISITAFIREFOX_FIELD_NUMBER = 5;
+    private long visitaFirefox_;
+    /**
+     * <code>int64 visitaFirefox = 5;</code>
+     * @return The visitaFirefox.
+     */
+    @java.lang.Override
+    public long getVisitaFirefox() {
+      return visitaFirefox_;
+    }
+
+    public static final int VISITAWINDOWS_FIELD_NUMBER = 6;
+    private long visitaWindows_;
+    /**
+     * <code>int64 visitaWindows = 6;</code>
+     * @return The visitaWindows.
+     */
+    @java.lang.Override
+    public long getVisitaWindows() {
+      return visitaWindows_;
+    }
+
+    public static final int VISITAUBUNTU_FIELD_NUMBER = 7;
+    private long visitaUbuntu_;
+    /**
+     * <code>int64 visitaUbuntu = 7;</code>
+     * @return The visitaUbuntu.
+     */
+    @java.lang.Override
+    public long getVisitaUbuntu() {
+      return visitaUbuntu_;
+    }
+
+    public static final int VISITASCHROME_FIELD_NUMBER = 8;
+    private long visitasChrome_;
+    /**
+     * <code>int64 visitasChrome = 8;</code>
+     * @return The visitasChrome.
+     */
+    @java.lang.Override
+    public long getVisitasChrome() {
+      return visitasChrome_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -857,6 +1720,21 @@ public final class UrlRnOuterClass {
       if (!getDateBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, date_);
       }
+      if (!getImg64Bytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, img64_);
+      }
+      if (visitaFirefox_ != 0L) {
+        output.writeInt64(5, visitaFirefox_);
+      }
+      if (visitaWindows_ != 0L) {
+        output.writeInt64(6, visitaWindows_);
+      }
+      if (visitaUbuntu_ != 0L) {
+        output.writeInt64(7, visitaUbuntu_);
+      }
+      if (visitasChrome_ != 0L) {
+        output.writeInt64(8, visitasChrome_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -874,6 +1752,25 @@ public final class UrlRnOuterClass {
       }
       if (!getDateBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, date_);
+      }
+      if (!getImg64Bytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, img64_);
+      }
+      if (visitaFirefox_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, visitaFirefox_);
+      }
+      if (visitaWindows_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, visitaWindows_);
+      }
+      if (visitaUbuntu_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, visitaUbuntu_);
+      }
+      if (visitasChrome_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(8, visitasChrome_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -896,6 +1793,16 @@ public final class UrlRnOuterClass {
           .equals(other.getShortUrl())) return false;
       if (!getDate()
           .equals(other.getDate())) return false;
+      if (!getImg64()
+          .equals(other.getImg64())) return false;
+      if (getVisitaFirefox()
+          != other.getVisitaFirefox()) return false;
+      if (getVisitaWindows()
+          != other.getVisitaWindows()) return false;
+      if (getVisitaUbuntu()
+          != other.getVisitaUbuntu()) return false;
+      if (getVisitasChrome()
+          != other.getVisitasChrome()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -913,6 +1820,20 @@ public final class UrlRnOuterClass {
       hash = (53 * hash) + getShortUrl().hashCode();
       hash = (37 * hash) + DATE_FIELD_NUMBER;
       hash = (53 * hash) + getDate().hashCode();
+      hash = (37 * hash) + IMG64_FIELD_NUMBER;
+      hash = (53 * hash) + getImg64().hashCode();
+      hash = (37 * hash) + VISITAFIREFOX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitaFirefox());
+      hash = (37 * hash) + VISITAWINDOWS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitaWindows());
+      hash = (37 * hash) + VISITAUBUNTU_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitaUbuntu());
+      hash = (37 * hash) + VISITASCHROME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitasChrome());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1052,6 +1973,16 @@ public final class UrlRnOuterClass {
 
         date_ = "";
 
+        img64_ = "";
+
+        visitaFirefox_ = 0L;
+
+        visitaWindows_ = 0L;
+
+        visitaUbuntu_ = 0L;
+
+        visitasChrome_ = 0L;
+
         return this;
       }
 
@@ -1081,6 +2012,11 @@ public final class UrlRnOuterClass {
         result.url_ = url_;
         result.shortUrl_ = shortUrl_;
         result.date_ = date_;
+        result.img64_ = img64_;
+        result.visitaFirefox_ = visitaFirefox_;
+        result.visitaWindows_ = visitaWindows_;
+        result.visitaUbuntu_ = visitaUbuntu_;
+        result.visitasChrome_ = visitasChrome_;
         onBuilt();
         return result;
       }
@@ -1140,6 +2076,22 @@ public final class UrlRnOuterClass {
         if (!other.getDate().isEmpty()) {
           date_ = other.date_;
           onChanged();
+        }
+        if (!other.getImg64().isEmpty()) {
+          img64_ = other.img64_;
+          onChanged();
+        }
+        if (other.getVisitaFirefox() != 0L) {
+          setVisitaFirefox(other.getVisitaFirefox());
+        }
+        if (other.getVisitaWindows() != 0L) {
+          setVisitaWindows(other.getVisitaWindows());
+        }
+        if (other.getVisitaUbuntu() != 0L) {
+          setVisitaUbuntu(other.getVisitaUbuntu());
+        }
+        if (other.getVisitasChrome() != 0L) {
+          setVisitasChrome(other.getVisitasChrome());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1394,6 +2346,206 @@ public final class UrlRnOuterClass {
   checkByteStringIsUtf8(value);
         
         date_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object img64_ = "";
+      /**
+       * <code>string img64 = 4;</code>
+       * @return The img64.
+       */
+      public java.lang.String getImg64() {
+        java.lang.Object ref = img64_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          img64_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string img64 = 4;</code>
+       * @return The bytes for img64.
+       */
+      public com.google.protobuf.ByteString
+          getImg64Bytes() {
+        java.lang.Object ref = img64_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          img64_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string img64 = 4;</code>
+       * @param value The img64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImg64(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        img64_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string img64 = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImg64() {
+        
+        img64_ = getDefaultInstance().getImg64();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string img64 = 4;</code>
+       * @param value The bytes for img64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImg64Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        img64_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long visitaFirefox_ ;
+      /**
+       * <code>int64 visitaFirefox = 5;</code>
+       * @return The visitaFirefox.
+       */
+      @java.lang.Override
+      public long getVisitaFirefox() {
+        return visitaFirefox_;
+      }
+      /**
+       * <code>int64 visitaFirefox = 5;</code>
+       * @param value The visitaFirefox to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitaFirefox(long value) {
+        
+        visitaFirefox_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitaFirefox = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitaFirefox() {
+        
+        visitaFirefox_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitaWindows_ ;
+      /**
+       * <code>int64 visitaWindows = 6;</code>
+       * @return The visitaWindows.
+       */
+      @java.lang.Override
+      public long getVisitaWindows() {
+        return visitaWindows_;
+      }
+      /**
+       * <code>int64 visitaWindows = 6;</code>
+       * @param value The visitaWindows to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitaWindows(long value) {
+        
+        visitaWindows_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitaWindows = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitaWindows() {
+        
+        visitaWindows_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitaUbuntu_ ;
+      /**
+       * <code>int64 visitaUbuntu = 7;</code>
+       * @return The visitaUbuntu.
+       */
+      @java.lang.Override
+      public long getVisitaUbuntu() {
+        return visitaUbuntu_;
+      }
+      /**
+       * <code>int64 visitaUbuntu = 7;</code>
+       * @param value The visitaUbuntu to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitaUbuntu(long value) {
+        
+        visitaUbuntu_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitaUbuntu = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitaUbuntu() {
+        
+        visitaUbuntu_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitasChrome_ ;
+      /**
+       * <code>int64 visitasChrome = 8;</code>
+       * @return The visitasChrome.
+       */
+      @java.lang.Override
+      public long getVisitasChrome() {
+        return visitasChrome_;
+      }
+      /**
+       * <code>int64 visitasChrome = 8;</code>
+       * @param value The visitasChrome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitasChrome(long value) {
+        
+        visitasChrome_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitasChrome = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitasChrome() {
+        
+        visitasChrome_ = 0L;
         onChanged();
         return this;
       }
@@ -3156,6 +4308,11 @@ public final class UrlRnOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_urlrn_UrlRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_urlrn_newUrlRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_urlrn_newUrlRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_urlrn_UrlResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3185,13 +4342,18 @@ public final class UrlRnOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\013UrlRn.proto\022\005urlrn\"\035\n\nUrlRequest\022\017\n\007us" +
-      "uario\030\001 \001(\t\":\n\013UrlResponse\022\013\n\003url\030\001 \001(\t\022" +
-      "\020\n\010shortUrl\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\"\030\n\nUrlBo" +
-      "rrado\022\n\n\002ok\030\001 \001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001 \003" +
-      "(\0132\022.urlrn.UrlResponse\"\007\n\005Empty2h\n\005UrlRn" +
-      "\022/\n\006getUrl\022\021.urlrn.UrlRequest\032\022.urlrn.Ur" +
-      "lResponse\022.\n\010listaUrl\022\021.urlrn.UrlRequest" +
-      "\032\017.urlrn.ListaUrlb\006proto3"
+      "uario\030\001 \001(\t\"-\n\rnewUrlRequest\022\013\n\003url\030\001 \001(" +
+      "\t\022\017\n\007usuario\030\002 \001(\t\"\244\001\n\013UrlResponse\022\013\n\003ur" +
+      "l\030\001 \001(\t\022\020\n\010shortUrl\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\022" +
+      "\r\n\005img64\030\004 \001(\t\022\025\n\rvisitaFirefox\030\005 \001(\003\022\025\n" +
+      "\rvisitaWindows\030\006 \001(\003\022\024\n\014visitaUbuntu\030\007 \001" +
+      "(\003\022\025\n\rvisitasChrome\030\010 \001(\003\"\030\n\nUrlBorrado\022" +
+      "\n\n\002ok\030\001 \001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001 \003(\0132\022.u" +
+      "rlrn.UrlResponse\"\007\n\005Empty2\236\001\n\005UrlRn\022/\n\006g" +
+      "etUrl\022\021.urlrn.UrlRequest\032\022.urlrn.UrlResp" +
+      "onse\022.\n\010listaUrl\022\021.urlrn.UrlRequest\032\017.ur" +
+      "lrn.ListaUrl\0224\n\010crearUrl\022\024.urlrn.newUrlR" +
+      "equest\032\022.urlrn.UrlResponseb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3203,26 +4365,32 @@ public final class UrlRnOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_UrlRequest_descriptor,
         new java.lang.String[] { "Usuario", });
-    internal_static_urlrn_UrlResponse_descriptor =
+    internal_static_urlrn_newUrlRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_urlrn_newUrlRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_urlrn_newUrlRequest_descriptor,
+        new java.lang.String[] { "Url", "Usuario", });
+    internal_static_urlrn_UrlResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_urlrn_UrlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_UrlResponse_descriptor,
-        new java.lang.String[] { "Url", "ShortUrl", "Date", });
+        new java.lang.String[] { "Url", "ShortUrl", "Date", "Img64", "VisitaFirefox", "VisitaWindows", "VisitaUbuntu", "VisitasChrome", });
     internal_static_urlrn_UrlBorrado_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_urlrn_UrlBorrado_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_UrlBorrado_descriptor,
         new java.lang.String[] { "Ok", });
     internal_static_urlrn_ListaUrl_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_urlrn_ListaUrl_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_ListaUrl_descriptor,
         new java.lang.String[] { "Url", });
     internal_static_urlrn_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_urlrn_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_Empty_descriptor,

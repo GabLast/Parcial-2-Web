@@ -24,6 +24,10 @@ urlrn/UrlRnOuterClass.java
  urlrn.UrlRnOuterClass$UrlResponse$1
  urlrn.UrlRnOuterClass$UrlResponse$Builder
  urlrn.UrlRnOuterClass$UrlResponseOrBuilder
+ urlrn.UrlRnOuterClass$newUrlRequest
+ urlrn.UrlRnOuterClass$newUrlRequest$1
+ urlrn.UrlRnOuterClass$newUrlRequest$Builder
+ urlrn.UrlRnOuterClass$newUrlRequestOrBuilder
 edu/pucmm/eict/Models/Usuario.java
  edu.pucmm.eict.Models.Usuario
 edu/pucmm/eict/Models/DetallesURL.java

@@ -5,11 +5,20 @@ package urlrn;
 message UrlRequest{
   string usuario = 1;
 }
+message  newUrlRequest{
+  string url = 1;
+  string usuario = 2;
+}
 
 message UrlResponse{
   string url = 1;
   string shortUrl = 2;
   string date = 3;
+  string img64 = 4;
+  int64 visitaFirefox = 5;
+  int64 visitaWindows = 6;
+  int64 visitaUbuntu = 7;
+  int64  visitasChrome = 8;
 
 }
 
@@ -28,4 +37,5 @@ message Empty{
 service UrlRn{
   rpc getUrl(UrlRequest) returns (UrlResponse);
   rpc listaUrl(UrlRequest) returns (ListaUrl);
+  rpc crearUrl(newUrlRequest) returns (UrlResponse);
 }

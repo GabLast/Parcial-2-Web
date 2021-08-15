@@ -76,6 +76,37 @@ public final class UrlRnGrpc {
     return getListaUrlMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<urlrn.UrlRnOuterClass.newUrlRequest,
+      urlrn.UrlRnOuterClass.UrlResponse> getCrearUrlMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "crearUrl",
+      requestType = urlrn.UrlRnOuterClass.newUrlRequest.class,
+      responseType = urlrn.UrlRnOuterClass.UrlResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<urlrn.UrlRnOuterClass.newUrlRequest,
+      urlrn.UrlRnOuterClass.UrlResponse> getCrearUrlMethod() {
+    io.grpc.MethodDescriptor<urlrn.UrlRnOuterClass.newUrlRequest, urlrn.UrlRnOuterClass.UrlResponse> getCrearUrlMethod;
+    if ((getCrearUrlMethod = UrlRnGrpc.getCrearUrlMethod) == null) {
+      synchronized (UrlRnGrpc.class) {
+        if ((getCrearUrlMethod = UrlRnGrpc.getCrearUrlMethod) == null) {
+          UrlRnGrpc.getCrearUrlMethod = getCrearUrlMethod =
+              io.grpc.MethodDescriptor.<urlrn.UrlRnOuterClass.newUrlRequest, urlrn.UrlRnOuterClass.UrlResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "crearUrl"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  urlrn.UrlRnOuterClass.newUrlRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  urlrn.UrlRnOuterClass.UrlResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UrlRnMethodDescriptorSupplier("crearUrl"))
+              .build();
+        }
+      }
+    }
+    return getCrearUrlMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -138,6 +169,13 @@ public final class UrlRnGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListaUrlMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void crearUrl(urlrn.UrlRnOuterClass.newUrlRequest request,
+        io.grpc.stub.StreamObserver<urlrn.UrlRnOuterClass.UrlResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCrearUrlMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -154,6 +192,13 @@ public final class UrlRnGrpc {
                 urlrn.UrlRnOuterClass.UrlRequest,
                 urlrn.UrlRnOuterClass.ListaUrl>(
                   this, METHODID_LISTA_URL)))
+          .addMethod(
+            getCrearUrlMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                urlrn.UrlRnOuterClass.newUrlRequest,
+                urlrn.UrlRnOuterClass.UrlResponse>(
+                  this, METHODID_CREAR_URL)))
           .build();
     }
   }
@@ -187,6 +232,14 @@ public final class UrlRnGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListaUrlMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void crearUrl(urlrn.UrlRnOuterClass.newUrlRequest request,
+        io.grpc.stub.StreamObserver<urlrn.UrlRnOuterClass.UrlResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCrearUrlMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -215,6 +268,13 @@ public final class UrlRnGrpc {
     public urlrn.UrlRnOuterClass.ListaUrl listaUrl(urlrn.UrlRnOuterClass.UrlRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListaUrlMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public urlrn.UrlRnOuterClass.UrlResponse crearUrl(urlrn.UrlRnOuterClass.newUrlRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCrearUrlMethod(), getCallOptions(), request);
     }
   }
 
@@ -247,10 +307,19 @@ public final class UrlRnGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListaUrlMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<urlrn.UrlRnOuterClass.UrlResponse> crearUrl(
+        urlrn.UrlRnOuterClass.newUrlRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCrearUrlMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_URL = 0;
   private static final int METHODID_LISTA_URL = 1;
+  private static final int METHODID_CREAR_URL = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -276,6 +345,10 @@ public final class UrlRnGrpc {
         case METHODID_LISTA_URL:
           serviceImpl.listaUrl((urlrn.UrlRnOuterClass.UrlRequest) request,
               (io.grpc.stub.StreamObserver<urlrn.UrlRnOuterClass.ListaUrl>) responseObserver);
+          break;
+        case METHODID_CREAR_URL:
+          serviceImpl.crearUrl((urlrn.UrlRnOuterClass.newUrlRequest) request,
+              (io.grpc.stub.StreamObserver<urlrn.UrlRnOuterClass.UrlResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -340,6 +413,7 @@ public final class UrlRnGrpc {
               .setSchemaDescriptor(new UrlRnFileDescriptorSupplier())
               .addMethod(getGetUrlMethod())
               .addMethod(getListaUrlMethod())
+              .addMethod(getCrearUrlMethod())
               .build();
         }
       }
