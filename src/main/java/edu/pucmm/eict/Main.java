@@ -7,6 +7,7 @@ import edu.pucmm.eict.Controllers.UserController;
 import edu.pucmm.eict.Database.DBConfig;
 import edu.pucmm.eict.Database.DBConnection;
 import edu.pucmm.eict.Helpers.ServiciosRetorno;
+import edu.pucmm.eict.WebServices.GRPCservice;
 import edu.pucmm.eict.WebServices.RestAPIController;
 import edu.pucmm.eict.WebServices.SOAPController;
 import io.javalin.plugin.openapi.OpenApiOptions;
@@ -17,11 +18,13 @@ import edu.pucmm.eict.Services.UserServices;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
+import java.io.IOException;
+
 public class Main {
 
     private static String modoConexion = "";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         if(args.length >= 1){
             modoConexion = args[0];
@@ -43,6 +46,22 @@ public class Main {
         if (UserServices.getInstancia().findAll().isEmpty()) {
             UserServices.getInstancia().init();
         }
+
+        int port = 50051;
+
+       Server server = ServerBuilder.forPort(port)
+                .addService(new GRPCservice())
+                .build()
+                .start();
+
+       /* Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.err.println("Cerrando servidor por la JVM ");
+            if (server != null) {
+                server.shutdown();
+            }
+            System.err.println("Servidor abajo!...");
+        }));*/
+
 
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");

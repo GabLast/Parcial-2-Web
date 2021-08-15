@@ -1,2 +1,3 @@
 rootProject.name = 'Parcial-2'
+include 'proto'
 
