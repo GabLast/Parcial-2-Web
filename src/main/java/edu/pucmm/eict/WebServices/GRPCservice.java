@@ -1,7 +1,6 @@
 package edu.pucmm.eict.WebServices;
 
 import edu.pucmm.eict.Helpers.ServiciosRetorno;
-import edu.pucmm.eict.Models.DetallesURL;
 import edu.pucmm.eict.Models.Url;
 import edu.pucmm.eict.Models.Usuario;
 import edu.pucmm.eict.Services.UrlServices;
