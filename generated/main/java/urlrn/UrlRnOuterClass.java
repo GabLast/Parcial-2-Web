@@ -1375,6 +1375,30 @@ public final class UrlRnOuterClass {
      * @return The visitasChrome.
      */
     long getVisitasChrome();
+
+    /**
+     * <code>int64 visitasOpera = 9;</code>
+     * @return The visitasOpera.
+     */
+    long getVisitasOpera();
+
+    /**
+     * <code>int64 visitasSafari = 10;</code>
+     * @return The visitasSafari.
+     */
+    long getVisitasSafari();
+
+    /**
+     * <code>int64 visitaAndroid = 11;</code>
+     * @return The visitaAndroid.
+     */
+    long getVisitaAndroid();
+
+    /**
+     * <code>int64 visitaEdge = 12;</code>
+     * @return The visitaEdge.
+     */
+    long getVisitaEdge();
   }
   /**
    * Protobuf type {@code urlrn.UrlResponse}
@@ -1467,6 +1491,26 @@ public final class UrlRnOuterClass {
             case 64: {
 
               visitasChrome_ = input.readInt64();
+              break;
+            }
+            case 72: {
+
+              visitasOpera_ = input.readInt64();
+              break;
+            }
+            case 80: {
+
+              visitasSafari_ = input.readInt64();
+              break;
+            }
+            case 88: {
+
+              visitaAndroid_ = input.readInt64();
+              break;
+            }
+            case 96: {
+
+              visitaEdge_ = input.readInt64();
               break;
             }
             default: {
@@ -1697,6 +1741,50 @@ public final class UrlRnOuterClass {
       return visitasChrome_;
     }
 
+    public static final int VISITASOPERA_FIELD_NUMBER = 9;
+    private long visitasOpera_;
+    /**
+     * <code>int64 visitasOpera = 9;</code>
+     * @return The visitasOpera.
+     */
+    @java.lang.Override
+    public long getVisitasOpera() {
+      return visitasOpera_;
+    }
+
+    public static final int VISITASSAFARI_FIELD_NUMBER = 10;
+    private long visitasSafari_;
+    /**
+     * <code>int64 visitasSafari = 10;</code>
+     * @return The visitasSafari.
+     */
+    @java.lang.Override
+    public long getVisitasSafari() {
+      return visitasSafari_;
+    }
+
+    public static final int VISITAANDROID_FIELD_NUMBER = 11;
+    private long visitaAndroid_;
+    /**
+     * <code>int64 visitaAndroid = 11;</code>
+     * @return The visitaAndroid.
+     */
+    @java.lang.Override
+    public long getVisitaAndroid() {
+      return visitaAndroid_;
+    }
+
+    public static final int VISITAEDGE_FIELD_NUMBER = 12;
+    private long visitaEdge_;
+    /**
+     * <code>int64 visitaEdge = 12;</code>
+     * @return The visitaEdge.
+     */
+    @java.lang.Override
+    public long getVisitaEdge() {
+      return visitaEdge_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1735,6 +1823,18 @@ public final class UrlRnOuterClass {
       if (visitasChrome_ != 0L) {
         output.writeInt64(8, visitasChrome_);
       }
+      if (visitasOpera_ != 0L) {
+        output.writeInt64(9, visitasOpera_);
+      }
+      if (visitasSafari_ != 0L) {
+        output.writeInt64(10, visitasSafari_);
+      }
+      if (visitaAndroid_ != 0L) {
+        output.writeInt64(11, visitaAndroid_);
+      }
+      if (visitaEdge_ != 0L) {
+        output.writeInt64(12, visitaEdge_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1772,6 +1872,22 @@ public final class UrlRnOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(8, visitasChrome_);
       }
+      if (visitasOpera_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(9, visitasOpera_);
+      }
+      if (visitasSafari_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(10, visitasSafari_);
+      }
+      if (visitaAndroid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(11, visitaAndroid_);
+      }
+      if (visitaEdge_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(12, visitaEdge_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1803,6 +1919,14 @@ public final class UrlRnOuterClass {
           != other.getVisitaUbuntu()) return false;
       if (getVisitasChrome()
           != other.getVisitasChrome()) return false;
+      if (getVisitasOpera()
+          != other.getVisitasOpera()) return false;
+      if (getVisitasSafari()
+          != other.getVisitasSafari()) return false;
+      if (getVisitaAndroid()
+          != other.getVisitaAndroid()) return false;
+      if (getVisitaEdge()
+          != other.getVisitaEdge()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1834,6 +1958,18 @@ public final class UrlRnOuterClass {
       hash = (37 * hash) + VISITASCHROME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getVisitasChrome());
+      hash = (37 * hash) + VISITASOPERA_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitasOpera());
+      hash = (37 * hash) + VISITASSAFARI_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitasSafari());
+      hash = (37 * hash) + VISITAANDROID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitaAndroid());
+      hash = (37 * hash) + VISITAEDGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVisitaEdge());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1983,6 +2119,14 @@ public final class UrlRnOuterClass {
 
         visitasChrome_ = 0L;
 
+        visitasOpera_ = 0L;
+
+        visitasSafari_ = 0L;
+
+        visitaAndroid_ = 0L;
+
+        visitaEdge_ = 0L;
+
         return this;
       }
 
@@ -2017,6 +2161,10 @@ public final class UrlRnOuterClass {
         result.visitaWindows_ = visitaWindows_;
         result.visitaUbuntu_ = visitaUbuntu_;
         result.visitasChrome_ = visitasChrome_;
+        result.visitasOpera_ = visitasOpera_;
+        result.visitasSafari_ = visitasSafari_;
+        result.visitaAndroid_ = visitaAndroid_;
+        result.visitaEdge_ = visitaEdge_;
         onBuilt();
         return result;
       }
@@ -2092,6 +2240,18 @@ public final class UrlRnOuterClass {
         }
         if (other.getVisitasChrome() != 0L) {
           setVisitasChrome(other.getVisitasChrome());
+        }
+        if (other.getVisitasOpera() != 0L) {
+          setVisitasOpera(other.getVisitasOpera());
+        }
+        if (other.getVisitasSafari() != 0L) {
+          setVisitasSafari(other.getVisitasSafari());
+        }
+        if (other.getVisitaAndroid() != 0L) {
+          setVisitaAndroid(other.getVisitaAndroid());
+        }
+        if (other.getVisitaEdge() != 0L) {
+          setVisitaEdge(other.getVisitaEdge());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2546,6 +2706,130 @@ public final class UrlRnOuterClass {
       public Builder clearVisitasChrome() {
         
         visitasChrome_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitasOpera_ ;
+      /**
+       * <code>int64 visitasOpera = 9;</code>
+       * @return The visitasOpera.
+       */
+      @java.lang.Override
+      public long getVisitasOpera() {
+        return visitasOpera_;
+      }
+      /**
+       * <code>int64 visitasOpera = 9;</code>
+       * @param value The visitasOpera to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitasOpera(long value) {
+        
+        visitasOpera_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitasOpera = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitasOpera() {
+        
+        visitasOpera_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitasSafari_ ;
+      /**
+       * <code>int64 visitasSafari = 10;</code>
+       * @return The visitasSafari.
+       */
+      @java.lang.Override
+      public long getVisitasSafari() {
+        return visitasSafari_;
+      }
+      /**
+       * <code>int64 visitasSafari = 10;</code>
+       * @param value The visitasSafari to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitasSafari(long value) {
+        
+        visitasSafari_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitasSafari = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitasSafari() {
+        
+        visitasSafari_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitaAndroid_ ;
+      /**
+       * <code>int64 visitaAndroid = 11;</code>
+       * @return The visitaAndroid.
+       */
+      @java.lang.Override
+      public long getVisitaAndroid() {
+        return visitaAndroid_;
+      }
+      /**
+       * <code>int64 visitaAndroid = 11;</code>
+       * @param value The visitaAndroid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitaAndroid(long value) {
+        
+        visitaAndroid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitaAndroid = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitaAndroid() {
+        
+        visitaAndroid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long visitaEdge_ ;
+      /**
+       * <code>int64 visitaEdge = 12;</code>
+       * @return The visitaEdge.
+       */
+      @java.lang.Override
+      public long getVisitaEdge() {
+        return visitaEdge_;
+      }
+      /**
+       * <code>int64 visitaEdge = 12;</code>
+       * @param value The visitaEdge to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVisitaEdge(long value) {
+        
+        visitaEdge_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 visitaEdge = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVisitaEdge() {
+        
+        visitaEdge_ = 0L;
         onChanged();
         return this;
       }
@@ -4343,17 +4627,20 @@ public final class UrlRnOuterClass {
     java.lang.String[] descriptorData = {
       "\n\013UrlRn.proto\022\005urlrn\"\035\n\nUrlRequest\022\017\n\007us" +
       "uario\030\001 \001(\t\"-\n\rnewUrlRequest\022\013\n\003url\030\001 \001(" +
-      "\t\022\017\n\007usuario\030\002 \001(\t\"\244\001\n\013UrlResponse\022\013\n\003ur" +
+      "\t\022\017\n\007usuario\030\002 \001(\t\"\374\001\n\013UrlResponse\022\013\n\003ur" +
       "l\030\001 \001(\t\022\020\n\010shortUrl\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\022" +
       "\r\n\005img64\030\004 \001(\t\022\025\n\rvisitaFirefox\030\005 \001(\003\022\025\n" +
       "\rvisitaWindows\030\006 \001(\003\022\024\n\014visitaUbuntu\030\007 \001" +
-      "(\003\022\025\n\rvisitasChrome\030\010 \001(\003\"\030\n\nUrlBorrado\022" +
-      "\n\n\002ok\030\001 \001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001 \003(\0132\022.u" +
-      "rlrn.UrlResponse\"\007\n\005Empty2\236\001\n\005UrlRn\022/\n\006g" +
-      "etUrl\022\021.urlrn.UrlRequest\032\022.urlrn.UrlResp" +
-      "onse\022.\n\010listaUrl\022\021.urlrn.UrlRequest\032\017.ur" +
-      "lrn.ListaUrl\0224\n\010crearUrl\022\024.urlrn.newUrlR" +
-      "equest\032\022.urlrn.UrlResponseb\006proto3"
+      "(\003\022\025\n\rvisitasChrome\030\010 \001(\003\022\024\n\014visitasOper" +
+      "a\030\t \001(\003\022\025\n\rvisitasSafari\030\n \001(\003\022\025\n\rvisita" +
+      "Android\030\013 \001(\003\022\022\n\nvisitaEdge\030\014 \001(\003\"\030\n\nUrl" +
+      "Borrado\022\n\n\002ok\030\001 \001(\010\"+\n\010ListaUrl\022\037\n\003url\030\001" +
+      " \003(\0132\022.urlrn.UrlResponse\"\007\n\005Empty2\236\001\n\005Ur" +
+      "lRn\022/\n\006getUrl\022\021.urlrn.UrlRequest\032\022.urlrn" +
+      ".UrlResponse\022.\n\010listaUrl\022\021.urlrn.UrlRequ" +
+      "est\032\017.urlrn.ListaUrl\0224\n\010crearUrl\022\024.urlrn" +
+      ".newUrlRequest\032\022.urlrn.UrlResponseb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4376,7 +4663,7 @@ public final class UrlRnOuterClass {
     internal_static_urlrn_UrlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_urlrn_UrlResponse_descriptor,
-        new java.lang.String[] { "Url", "ShortUrl", "Date", "Img64", "VisitaFirefox", "VisitaWindows", "VisitaUbuntu", "VisitasChrome", });
+        new java.lang.String[] { "Url", "ShortUrl", "Date", "Img64", "VisitaFirefox", "VisitaWindows", "VisitaUbuntu", "VisitasChrome", "VisitasOpera", "VisitasSafari", "VisitaAndroid", "VisitaEdge", });
     internal_static_urlrn_UrlBorrado_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_urlrn_UrlBorrado_fieldAccessorTable = new
