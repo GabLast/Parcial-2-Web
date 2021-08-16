@@ -58,6 +58,10 @@ public class GRPCservice extends UrlRnGrpc.UrlRnImplBase {
                 .setVisitasChrome(s.getVisitasChrome())
                 .setVisitaWindows(s.getVisitaswindows())
                 .setVisitaUbuntu(s.getVisitasubuntu())
+                .setVisitasOpera(s.getVisitasOpera())
+                .setVisitaAndroid(s.getVisitasandroid())
+                .setVisitaEdge(s.getVisitasEdge())
+                .setVisitasSafari(s.getVisitasSafari())
                 .build();
     }
 

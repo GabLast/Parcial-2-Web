@@ -18,7 +18,11 @@ message UrlResponse{
   int64 visitaFirefox = 5;
   int64 visitaWindows = 6;
   int64 visitaUbuntu = 7;
-  int64  visitasChrome = 8;
+  int64 visitasChrome = 8;
+  int64 visitasOpera = 9;
+  int64 visitasSafari =10;
+  int64 visitaAndroid = 11;
+  int64 visitaEdge = 12;
 
 }
 
