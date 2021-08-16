@@ -34,8 +34,8 @@ edu/pucmm/eict/Models/DetallesURL.java
  edu.pucmm.eict.Models.DetallesURL
 edu/pucmm/eict/Database/DBConfig.java
  edu.pucmm.eict.Database.DBConfig
-edu/pucmm/eict/Controllers/UrlController.java
- edu.pucmm.eict.Controllers.UrlController
+edu/pucmm/eict/Services/DetailsUrlServices.java
+ edu.pucmm.eict.Services.DetailsUrlServices
 edu/pucmm/eict/Controllers/GeneralController.java
  edu.pucmm.eict.Controllers.GeneralController
 edu/pucmm/eict/WebServices/SOAPController.java
@@ -69,14 +69,14 @@ edu/pucmm/eict/Controllers/UserController.java
  edu.pucmm.eict.Controllers.UserController
 edu/pucmm/eict/Services/UrlServices.java
  edu.pucmm.eict.Services.UrlServices
-edu/pucmm/eict/Services/DetailsUrlServices.java
- edu.pucmm.eict.Services.DetailsUrlServices
-edu/pucmm/eict/Main.java
- edu.pucmm.eict.Main
 edu/pucmm/eict/SOAP/URLWebServices.java
  edu.pucmm.eict.SOAP.URLWebServices
+edu/pucmm/eict/Main.java
+ edu.pucmm.eict.Main
 edu/pucmm/eict/WebServices/GRPCservice.java
  edu.pucmm.eict.WebServices.GRPCservice
+edu/pucmm/eict/Controllers/UrlController.java
+ edu.pucmm.eict.Controllers.UrlController
 edu/pucmm/eict/WebServices/RestAPIController.java
  edu.pucmm.eict.WebServices.RestAPIController
 edu/pucmm/eict/Helpers/ServiciosRetorno.java
