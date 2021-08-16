@@ -46,7 +46,7 @@ public class ServiciosRetorno {
         this.visitaswindows = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "Win");
         this.visitasubuntu = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "buntu");
         this.visitasandroid = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "ndroid");
-        this.previewIMG = img2Text(url.getUrl());
+        this.previewIMG = img2Text(url.getUrl());/* "No ha sido asignada para mantener la consola limpia";*/
     }
 
     public static String img2Text(String url){

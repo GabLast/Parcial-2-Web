@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# v12 - Para obligar al cambio bueno mantener una versión.
+# Esto es un comentario.
+
+#Trama que indica que 
+CACHE:
+/SinConexion-ShortURL.html
+/html5/index.html
+/offline.html
+/css/bootstrap.min.css
+/css/custom.css
+/js/bootstrap.bundle.min.js
+/js/bootstrap.min.js
+/js/Custom.js
+/js/bootstrap.bundle.js.map
+/404.html
+
+NETWORK:
+/
+
+FALLBACK:
+/ /404.html
