@@ -38,11 +38,11 @@ public class ServiciosRetorno {
         this.urlcorta = GeneralController.getInstancia().getCloudlink() + "use/" + url.getShortUrl();
         this.fechaRegistro = url.getFechaRegistro();
         this.fechaString = fechaRegistro.toString();
-        this.visitasSafari = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Safari");
-        this.visitasOpera = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Opera");
-        this.visitasChrome = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Chrome");
-        this.visitasEdge = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Edge");
-        this.visitasFirefox = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getUrl(), "Firefox");
+        this.visitasSafari = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getShortUrl(), "Safari");
+        this.visitasOpera = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getShortUrl(), "Opera");
+        this.visitasChrome = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getShortUrl(), "Chrome");
+        this.visitasEdge = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getShortUrl(), "Edge");
+        this.visitasFirefox = DetailsUrlServices.getInstancia().getSizeVisitaByShortUrlBrowser(url.getShortUrl(), "Firefox");
         this.visitaswindows = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "Win");
         this.visitasubuntu = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "buntu");
         this.visitasandroid = DetailsUrlServices.getInstancia().visitasOSLike(url.getShortUrl(), "ndroid");
