@@ -42,7 +42,7 @@ public class Main {
             GeneralController.getInstancia().setCloudlink("http://localhost:7000/");
             //******************************************************//
         }else {
-            GeneralController.getInstancia().setCloudlink("");
+            GeneralController.getInstancia().setCloudlink("https://final-web-urlshort.herokuapp.com/");
         }
 
         if (UserServices.getInstancia().findAll().isEmpty()) {

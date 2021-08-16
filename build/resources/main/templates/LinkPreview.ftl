@@ -23,7 +23,9 @@
                                 <img src="${Imagen}" alt="Aqui va la imagen del URL" style="height:300px;width:500px;align-content: center">
                             </div>
                             <div class="row mb-3 form-group">
-                                <input type="text" id="originalURL" name="originalURL" class="form-control" value="${originalURL}" placeholder="${originalURL}" readonly>
+                                <#if originalURL?has_content>
+                                    <input type="text" id="originalURL" name="originalURL" class="form-control" value="${originalURL}" placeholder="${originalURL}" readonly>
+                                </#if>
                             </div>
                         </form>
                     </div>

@@ -29,7 +29,7 @@
 
         //El evento que se dispara una vez, lo
         dataBase.onsuccess = function (e) {
-            console.log('Proceso ejecutado de forma correcta');
+            console.log('IDB Success');
         };
 
         dataBase.onerror = function (e) {
